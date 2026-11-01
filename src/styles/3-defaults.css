@@ -1,7 +1,23 @@
-body {
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 a {
+  /* keep long URLs from overflowing on narrow screens */
+  overflow-wrap: anywhere;
+}
+
+/* larger tap targets for links in lists and the header */
+li > a,
+header > a {
+  display: inline-block;
+  padding-block: 0.6em;
 }
 
 ol,
@@ -10,5 +26,32 @@ ul {
 }
 
 hr {
+  margin-block: 1em;
+}
+
+/* vertical rhythm (margins are reset globally) */
+p + p {
+  margin-block-start: 1em;
+}
+
+h2 {
+  margin-block: 1.25em 0.5em;
+}
+
+/* a group of lines (e.g. a poem stanza): tight inside, spaced between */
+.stanza {
+  margin-block: 1em;
+}
+
+.stanza > p + p {
+  margin-block-start: 0;
+}
+
+/* anchor jumps land with some breathing room */
+[id] {
+  scroll-margin-top: 1em;
+}
+
+figure {
   margin-block: 1em;
 }

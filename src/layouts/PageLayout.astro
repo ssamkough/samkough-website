@@ -12,13 +12,15 @@ const { title } = Astro.props;
     <main>
       <slot />
     </main>
-    <hr />
-    <footer></footer>
+    <!-- <hr /> -->
+    <!-- <footer></footer> -->
   </div>
 </Layout>
 
 <style>
-  main {
-    max-width: 600px;
+  .container {
+    width: 100%;
+    max-width: 65ch;
+    margin-inline: auto;
   }
 </style>

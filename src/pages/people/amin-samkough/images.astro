@@ -1,0 +1,113 @@
+---
+import PageLayout from "../../../layouts/PageLayout.astro";
+import Gallery from "../../../components/Gallery.astro";
+import type { GalleryImage } from "../../../data/gallery";
+import { archivePhotos } from "../../../data/archive-photos";
+
+// `wide` images span the full row on larger screens.
+const images: GalleryImage[] = [
+  {
+    file: "_profile.jpg",
+    width: 371,
+    height: 539,
+    alt: "Black-and-white studio portrait of Amin Samkough in a pinstriped suit and striped tie.",
+    caption: "Studio portrait of Amin Samkough.",
+  },
+  {
+    file: "amin-young.jpg",
+    width: 374,
+    height: 534,
+    alt: "Black-and-white photo of a young Amin Samkough in a dark suit, seated in front of a painted backdrop of the Eiffel Tower.",
+    caption:
+      "Amin Samkough as a young man, seated in front of a painted Eiffel Tower backdrop.",
+  },
+  {
+    file: "amin-garb.jpg",
+    width: 174,
+    height: 290,
+    alt: "Sepia photo of a young man standing in a military-style uniform and pith helmet.",
+    caption: "Amin Samkough in uniform and pith helmet.",
+  },
+  {
+    file: "amin-hat.jpg",
+    width: 652,
+    height: 470,
+    alt: "Colorized photo of a man in a beret, jacket and white trousers sitting on a moss-covered rock on a beach.",
+    caption:
+      "Amin Samkough in a beret, sitting on a rock at the seaside (colorized photo).",
+  },
+  {
+    file: "amin-fasha.jpg",
+    width: 817,
+    height: 1254,
+    alt: "Black-and-white photo of a man in a fur hat and dark coat with cartridge holders across the chest, with a crowd behind him.",
+    caption:
+      "Amin Samkough in traditional Circassian dress, with a fur hat and chest cartridge holders (gazyrs).",
+  },
+  {
+    file: "amin-family-2.jpg",
+    width: 461,
+    height: 665,
+    alt: "Colorized studio portrait of a man in a dark suit standing beside a woman in a patterned dress holding flowers.",
+    caption:
+      "Amin Samkough standing beside a woman in a patterned dress (colorized studio portrait).",
+  },
+  {
+    file: "amin-family.jpg",
+    width: 435,
+    height: 704,
+    alt: "Colorized studio portrait of a seated man in a dark suit between two standing women.",
+    caption:
+      "Amin Samkough seated between two women (colorized studio portrait).",
+  },
+  {
+    file: "amin-school.jpg",
+    width: 1069,
+    height: 714,
+    wide: true,
+    alt: "Black-and-white group photo of schoolchildren in fur hats in front of a stone building, with adults standing behind them.",
+    caption: "A school group photo of students in front of a stone building.",
+  },
+  {
+    file: "amin-school-2.jpg",
+    width: 1536,
+    height: 581,
+    wide: true,
+    alt: "Sepia photo of boys in white shirts and fur hats lined up on a field, with flags and onlookers behind them.",
+    caption:
+      "Students in white shirts and fur hats lined up on a field, with flags behind them.",
+  },
+  {
+    file: "marge-magazine.jpg",
+    width: 1574,
+    height: 2048,
+    alt: "Front page of an issue of the newspaper Marj, printed in Arabic script, with photographs and a sketch portrait.",
+    caption:
+      "Front page of the newspaper “Marj” (issue no. 71, dated 14 August 1931), which was founded in 1927 by the Circassian Society for the Promotion of Education and Culture.",
+  },
+];
+---
+
+<PageLayout title="Amin Samkough – Images">
+  <p>
+    <a href="/people/amin-samkough/">&larr; Amin Samkough</a>
+  </p>
+  <p>Tap or click an image to open it full size.</p>
+  <hr />
+  <section id="photographs">
+    <Gallery images={images} />
+  </section>
+  <hr />
+  <section id="school-archive">
+    <h2>Photographs from the Circassian school in Quneitra</h2>
+    <p>
+      These photographs were published with the article
+      <a href="/people/amin-samkough/circassian-school-in-syria/">
+        Circassian School in Syria and Its Founder – Samgug Amin
+      </a>
+      by A.S. Mirzoev. Each caption is shown in the original Russian, followed by
+      an English translation.
+    </p>
+    <Gallery images={archivePhotos} />
+  </section>
+</PageLayout>

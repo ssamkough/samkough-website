@@ -1,0 +1,445 @@
+---
+import PageLayout from "../../../layouts/PageLayout.astro";
+
+interface Item {
+  /** Original text as read from the page. */
+  text: string;
+  /** Language of the original: Arabic or Ottoman Turkish (Arabic script). */
+  lang: "ar" | "ota";
+  /** English translation. */
+  en: string;
+  confidence: "High" | "Medium" | "Low";
+  /** Why the reading or translation is uncertain. */
+  note?: string;
+}
+
+const header: Item[] = [
+  {
+    text: "مدير الجريدة المسئول: حاغور طارق ممتاز",
+    lang: "ar",
+    en: "Responsible director of the newspaper: Hagur Tariq Mumtaz.",
+    confidence: "High",
+    note: "The name is spelled “Hagur Taryk Mumtaz” in the article by Mirzoev and in other sources; the Latin spelling is a transliteration.",
+  },
+  {
+    text: "بدل الاشتراك: عن سنة ثلاث ليرات سورية",
+    lang: "ar",
+    en: "Subscription fee: three Syrian lira per year.",
+    confidence: "High",
+  },
+  {
+    text: "في الخارج: عن سنة ليرة انكليزية",
+    lang: "ar",
+    en: "Abroad: one English pound (lira) per year.",
+    confidence: "High",
+  },
+  {
+    text: "ادارة الجريدة: سوريا – دمشق «جريدة مارج» صندوق البريد: ٣٠٩",
+    lang: "ar",
+    en: "Newspaper administration: Syria – Damascus, “Marj Newspaper”, P.O. Box: 309.",
+    confidence: "High",
+  },
+  {
+    text: "تاريخ تأسيسها ١٩٢٧ – ١٣٤٥",
+    lang: "ar",
+    en: "Date of its founding: 1927 – 1345 [AH].",
+    confidence: "Medium",
+    note: "The translation is literal, but the dates don’t agree. The Turkish box gives the founding as 7 October 1927, which falls in the Islamic year 1346, not 1345. This looks like an error in the original print.",
+  },
+  {
+    text: "عدد: ٧١",
+    lang: "ar",
+    en: "Issue: 71.",
+    confidence: "High",
+  },
+  {
+    text: "الخميس – ٢٩ ربيع الاول – ١٣٥٠",
+    lang: "ar",
+    en: "Thursday – 29 Rabi‘ al-awwal – 1350 [AH].",
+    confidence: "High",
+  },
+  {
+    text: "ثمن العدد: ٥ قروش",
+    lang: "ar",
+    en: "Price of the issue: 5 piastres.",
+    confidence: "High",
+  },
+  {
+    text: "صاحب امتياز ومديري حاغور طارق ممتاز",
+    lang: "ota",
+    en: "Concession holder and director: Hagur Tariq Mumtaz.",
+    confidence: "High",
+    note: "“Sahib-i imtiyaz” is the Ottoman term for the licensed owner of a publication.",
+  },
+  {
+    text: "آبونه شرائطي: سنه لكى اوچ سورى ليراسى در",
+    lang: "ota",
+    en: "Subscription terms: three Syrian lira per year.",
+    confidence: "High",
+  },
+  {
+    text: "خارج ايچين: سنه لكى بر انكليز ليراسى در",
+    lang: "ota",
+    en: "For abroad: one English pound per year.",
+    confidence: "High",
+  },
+  {
+    text: "محل اداره سى: سورية – شام «مارج» غزته سى پوسته قوطوسى: ٣٠٩",
+    lang: "ota",
+    en: "Place of administration: Syria – Damascus, the newspaper “Marj”, post box: 309.",
+    confidence: "High",
+  },
+  {
+    text: "تاريخ تأسيسى – ٧ تشرين اول ١٩٢٧",
+    lang: "ota",
+    en: "Date of its founding – 7 October 1927.",
+    confidence: "High",
+  },
+  {
+    text: "پنجشنبه – ١٤ آغستوس – ١٩٣١",
+    lang: "ota",
+    en: "Thursday – 14 August 1931.",
+    confidence: "High",
+    note: "14 August 1931 was actually a Friday. See “Publication date” above.",
+  },
+  {
+    text: "فيياتى: ٥ غروشدر",
+    lang: "ota",
+    en: "Its price: 5 piastres.",
+    confidence: "High",
+  },
+  {
+    text: "تمامى قفقاسيا اولادلرينك علم، معرف، صنعت وتجارت …",
+    lang: "ota",
+    en: "“…of all the children of the Caucasus: knowledge, education, industry and trade…”",
+    confidence: "Low",
+    note: "This is the slogan line under the masthead. It is partly cut off by the photograph, so only the first part is read. The word I read as “معرف” is probably “معارف” (education), and the verb that ends the line is unclear.",
+  },
+];
+
+const headlines: Item[] = [
+  {
+    text: "«مارج» ياشايور وياشامالى در..",
+    lang: "ota",
+    en: "“Marj” lives and must live.. (lead editorial)",
+    confidence: "High",
+  },
+  {
+    text: "سوريه نك رئيس … فخاملو شيخ تاج الدين الحسني حضرتلرينك قنيطره و مجدل زيارتلرينه عائد خاطره لر",
+    lang: "ota",
+    en: "Memories of the visits of His Excellency Sheikh Taj al-Din al-Hasani, [?] President of Syria, to Quneitra and Majdal.",
+    confidence: "Medium",
+    note: "The word after “رئيس” (president) is unclear, so I left it out of the transcription and marked it [?] in the translation. “Majdal” is almost certainly Majdal Shams, since the article praises the hospitality of the Druze, but the page doesn’t say so. “Memories” (خاطره) suggests the visits had already happened.",
+  },
+  {
+    text: "رئيس حضرتلرى جوشقون خلق ظاهراتى قارشيسنده",
+    lang: "ota",
+    en: "The President before the enthusiastic demonstrations of the people.",
+    confidence: "Medium",
+    note: "“Demonstrations” (ظاهرات) here most likely means public displays of welcome, not political protests.",
+  },
+  {
+    text: "شيخ كنج حضرتلرينك مكلف ضيافتلرنده",
+    lang: "ota",
+    en: "At the lavish hospitality of Sheikh Kanj.",
+    confidence: "Low",
+    note: "“Kanj” is a guess at the vowels. I can’t identify who he is. “مكلف” can mean elaborate or costly, so “lavish” is my interpretation.",
+  },
+  {
+    text: "قنيطره ده مسعود وتاريخى كونلر",
+    lang: "ota",
+    en: "Happy and historic days in Quneitra.",
+    confidence: "Medium",
+    note: "“مسعود” means happy or auspicious.",
+  },
+  {
+    text: "جامع الازهر چركس علماء طلبه لرى آراسنده … بر خاطره",
+    lang: "ota",
+    en: "A [?] memory among the Circassian scholars and students of the Al-Azhar mosque.",
+    confidence: "Low",
+    note: "This is the headline above the group photograph in the lower right. One word in the middle is unreadable. Whether “scholars and students” describes the people in the photo or a separate group is also unclear.",
+  },
+];
+
+const samkough: Item[] = [
+  {
+    text: "… سوريه چركسلرينك پارلاق اميدى اولان سمكوغ امين بك ارتجالاً … ولطيف فرانسزجه ايله تعقيب ايتدى …",
+    lang: "ota",
+    en: "“… Amin Bey Samkough, the bright hope of the Circassians of Syria, followed [the speech] impromptu in refined French …”",
+    confidence: "Medium",
+    note: "Two words are unclear, one before “refined French” and one just before “impromptu”. The sentence is also cut at the start, so I can’t tell whose speech he followed. The district governor (“قائمقام”) gave an earlier welcome speech in the same column, so it was probably his.",
+  },
+  {
+    text: "… فوق الفاده تقدير بنى جلب ايدن بو خطابه براوو صدالريله وآلقيشلر ايچنده بيتدى",
+    lang: "ota",
+    en: "“… This speech, which won extraordinary appreciation, ended amid cries of ‘bravo’ and applause.”",
+    confidence: "Medium",
+    note: "The line follows directly after the passage above, so it most likely refers to Samkough’s speech.",
+  },
+];
+---
+
+<PageLayout title="“Marj” Newspaper, Issue No. 71 (14 August 1931)">
+  <p>
+    <a href="/people/amin-samkough/">&larr; Amin Samkough</a>
+  </p>
+  <hr />
+
+  <figure>
+    <a href="/amin-samkough/marge-magazine.jpg">
+      <img
+        src="/amin-samkough/marge-magazine.jpg"
+        width="1574"
+        height="2048"
+        alt="Front page of the newspaper Marj, issue no. 71, printed in Arabic script, with a masthead, two photographs, a sketch portrait and several columns."
+      />
+    </a>
+    <figcaption>
+      <em>Front page of “Marj”, issue no. 71. Tap or click to open full size.</em>
+    </figcaption>
+  </figure>
+  <hr />
+
+  <section id="overview">
+    <h2>What this is</h2>
+    <p>
+      “Marj” was a Circassian newspaper published from Quneitra and Damascus.
+      It was founded on 7 October 1927 and run by Hagur Tariq Mumtaz. Amin
+      Samkough is recorded elsewhere as having helped with it, and the school
+      article on this site lists the paper among the society’s publications.
+    </p>
+    <p>
+      The text on this page is in <strong>Ottoman Turkish written in Arabic
+      script</strong>, with a small Arabic information box on the left. I found
+      no Circassian text on the front page. Other sources say the paper ran in
+      Circassian, Turkish, Arabic and French, so other pages or issues may differ.
+    </p>
+  </section>
+  <hr />
+
+  <section id="date">
+    <h2>Publication date</h2>
+    <p>
+      <strong>Printed date: 14 August 1931, issue no. 71.</strong> The page
+      gives it three times:
+    </p>
+    <ul>
+      <li>
+        The Turkish box says <span lang="ota" dir="rtl">پنجشنبه – ١٤ آغستوس – ١٩٣١</span>
+        (“Thursday – 14 August – 1931”).
+      </li>
+      <li>
+        The Arabic box says <span lang="ar" dir="rtl">الخميس – ٢٩ ربيع الاول – ١٣٥٠</span>
+        (“Thursday – 29 Rabi‘ al-awwal – 1350”).
+      </li>
+      <li>
+        The Islamic date agrees with the Gregorian one. A standard tabular
+        conversion puts 29 Rabi‘ al-awwal 1350 on 14 August 1931. Real
+        Islamic dates can differ by a day depending on moon sighting.
+      </li>
+    </ul>
+    <p>
+      <strong>The weekday doesn’t match.</strong> 14 August 1931 was a Friday.
+      Thursday was 13 August. Both printed weekdays say Thursday, so the issue
+      may have been dated a day late, or the weekday was set in type from the
+      wrong calendar. I would cite it as “14 August 1931 (printed date)” and
+      note the discrepancy.
+    </p>
+    <p>
+      <strong>Issue numbers:</strong> Issue 71 over almost four years (7 October
+      1927 to August 1931) is about 200 weeks, so the paper was not weekly in
+      practice. This fits the lead editorial, which seems to discuss delays and
+      money problems. One published reference (the <em>Dictionary of Syrian
+      Newspapers</em>, as quoted by a local-history article) says only one issue
+      appeared. This page shows that is wrong.
+    </p>
+  </section>
+  <hr />
+
+  <section id="header">
+    <h2>Masthead and information boxes</h2>
+    <p>
+      The left box is in Arabic and the right box is in Ottoman Turkish. They
+      carry the same information. Each line shows the original, then the
+      translation. Confidence levels describe how sure I am of the reading and
+      the translation together.
+    </p>
+    <ul class="items">
+      {
+        header.map((item) => (
+          <li>
+            <p class="orig" lang={item.lang} dir="rtl">
+              {item.text}
+            </p>
+            <p>{item.en}</p>
+            <p class="note">
+              <small>
+                Confidence: {item.confidence}.{item.note ? ` ${item.note}` : ""}
+              </small>
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <hr />
+
+  <section id="headlines">
+    <h2>Headlines</h2>
+    <p>
+      The front page leads with two stories: an editorial about the newspaper
+      itself, and a report on the President of Syria’s visit to Quneitra and
+      the Golan.
+    </p>
+    <ul class="items">
+      {
+        headlines.map((item) => (
+          <li>
+            <p class="orig" lang={item.lang} dir="rtl">
+              {item.text}
+            </p>
+            <p>{item.en}</p>
+            <p class="note">
+              <small>
+                Confidence: {item.confidence}.{item.note ? ` ${item.note}` : ""}
+              </small>
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <hr />
+
+  <section id="amin-samkough">
+    <h2>Mention of Amin Samkough</h2>
+    <p>
+      “Samkough Amin Bey” (<span lang="ota" dir="rtl">سمكوغ امين بك</span>)
+      appears in the report on the presidential visit. As far as I can read it,
+      this is the passage:
+    </p>
+    <ul class="items">
+      {
+        samkough.map((item) => (
+          <li>
+            <p class="orig" lang={item.lang} dir="rtl">
+              {item.text}
+            </p>
+            <p>{item.en}</p>
+            <p class="note">
+              <small>
+                Confidence: {item.confidence}.{item.note ? ` ${item.note}` : ""}
+              </small>
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+    <p>
+      The text calls him “the bright hope of the Circassians of Syria”. That
+      fits Amin Samkough of Quneitra, who was active in Circassian affairs and
+      is linked to the paper by other sources. The page gives no surname details
+      or other identifiers, so this is an identification by context. Nothing on
+      the page says when the speech was made.
+    </p>
+  </section>
+  <hr />
+
+  <section id="summary">
+    <h2>Summary of the two main articles</h2>
+    <p>
+      The body text is small, and the print and the photograph are too poor for
+      me to transcribe it line by line. These are summaries of what I could
+      follow, not translations.
+    </p>
+    <h3>Editorial: “Marj lives and must live”</h3>
+    <p>
+      Signed by Hagur Tariq Mumtaz. It says that “Marj” has been serving the
+      Circassian cause for about four years. It mentions that the newspaper has
+      appeared irregularly and refers to its financial difficulties. It also
+      says that a reader or friend wrote urging that “Marj” should not be left
+      to die. The closing lines say the paper hopes to go on living, “God
+      willing”. <em>Medium-to-low confidence.</em> The sentences are long and
+      the print is faint in places.
+    </p>
+    <h3>Report on the President’s visit</h3>
+    <p>
+      The report describes a welcome for the President of Syria, Sheikh Taj
+      al-Din al-Hasani, in Quneitra and Majdal. It mentions a car convoy
+      leaving Quneitra before noon, crowds greeting the party along the road,
+      the hospitality of the local Druze, and welcome speeches. These include
+      one from a representative of a sports club (the name looks like “Khalid
+      Efendi”) and the speech by Amin Samkough quoted above. The sketch of a
+      turbaned man in the middle column probably portrays the sheikh named in
+      the headline, though the page doesn’t say so. <em>Medium-to-low
+      confidence.</em>
+    </p>
+  </section>
+  <hr />
+
+  <section id="caveats">
+    <h2>Caveats</h2>
+    <ul>
+      <li>
+        I read this from a photograph of a 1931 newspaper. I could read the
+        masthead, boxes, and headlines well. The body text is hard to read and
+        I only worked through selected passages, so please don’t treat this as
+        a full transcription.
+      </li>
+      <li>
+        Ottoman Turkish is hard to translate from print this size. It mixes
+        Turkish grammar with many Arabic and Persian words, and spelling
+        wasn’t standardized. Names are transliterated, and the Latin spellings
+        are my choice.
+      </li>
+      <li>
+        A fluent reader of Ottoman Turkish should check anything marked Low or
+        Medium confidence, especially the Samkough passage and the headlines.
+      </li>
+    </ul>
+  </section>
+  <hr />
+
+  <section id="related">
+    <h2>Related</h2>
+    <ul>
+      <li>
+        <a href="/people/amin-samkough/circassian-school-in-syria/">
+          Circassian School in Syria and Its Founder – Samgug Amin
+        </a>
+        (describes the society and its newspaper “Marj”)
+      </li>
+      <li>
+        <a href="/people/amin-samkough/images/">Images of Amin Samkough</a>
+      </li>
+    </ul>
+  </section>
+</PageLayout>
+
+<style>
+  .items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .items li {
+    padding-block: 0.75em;
+    border-block-end: 1px solid #ddd;
+  }
+
+  .items li p + p {
+    margin-block-start: 0.25em;
+  }
+
+  .orig {
+    font-size: 1.2em;
+    line-height: 1.8;
+    text-align: start;
+  }
+
+  figure img {
+    width: 100%;
+    height: auto;
+  }
+</style>

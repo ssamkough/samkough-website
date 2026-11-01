@@ -1,0 +1,95 @@
+---
+import type { GalleryImage } from "../data/gallery";
+
+interface Props {
+  images: GalleryImage[];
+  base?: string;
+}
+
+const { images, base = "/amin-samkough" } = Astro.props;
+---
+
+<div class="gallery">
+  {
+    images.map((img) => (
+      <figure class:list={["item", { wide: img.wide }]}>
+        <a href={`${base}/${img.file}`}>
+          <img
+            src={`${base}/${img.file}`}
+            alt={img.alt}
+            width={img.width}
+            height={img.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <figcaption>
+          {img.ru && (
+            <p class="ru" lang="ru">
+              {img.ru}
+            </p>
+          )}
+          <p>
+            <em>{img.caption}</em>
+          </p>
+          {img.note && (
+            <p class="note">
+              <span lang={img.note.lang} dir="auto">
+                {img.note.text}
+              </span>
+              <br />
+              <em>Handwritten note: {img.note.en}</em>
+            </p>
+          )}
+        </figcaption>
+      </figure>
+    ))
+  }
+</div>
+
+<style>
+  .gallery {
+    display: grid;
+    /* one column on phones, two or more as space allows */
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: 1.5rem 1rem;
+    align-items: start;
+  }
+
+  .item {
+    margin: 0;
+  }
+
+  .item a {
+    display: block;
+    padding: 0;
+  }
+
+  .item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .item figcaption {
+    margin-block-start: 0.5em;
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+
+  /* captions are short lines; keep them tight within a figure */
+  .item figcaption p + p {
+    margin-block-start: 0.25em;
+  }
+
+  .ru {
+    font-style: normal;
+  }
+
+  .note {
+    font-size: 0.95em;
+  }
+
+  .wide {
+    grid-column: 1 / -1;
+  }
+</style>

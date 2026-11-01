@@ -1,5 +1,7 @@
 ---
 import PageLayout from "../../../layouts/PageLayout.astro";
+import Gallery from "../../../components/Gallery.astro";
+import { archivePhotos } from "../../../data/archive-photos";
 ---
 
 <PageLayout title="Circassian School in Syria and Its Founder – Samgug Amin">
@@ -26,9 +28,7 @@ import PageLayout from "../../../layouts/PageLayout.astro";
         half of the XIX century.
       </em>
     </p>
-    <br />
     <p>UDC 946.111:379.362.9</p>
-    <br />
     <p>
       <em>
         Mirzoev Aslanbek Sultanovich, Candidate of Historical Sciences, Senior
@@ -38,7 +38,6 @@ import PageLayout from "../../../layouts/PageLayout.astro";
         the Russian Academy of Sciences” (ISI KBSC RAS), marzeibach@mail.ru
       </em>
     </p>
-    <br />
     <p>
       Education as a cultural phenomenon in the life of the foreign Circassian
       diaspora appeared almost simultaneously with its formation in the second
@@ -53,7 +52,6 @@ import PageLayout from "../../../layouts/PageLayout.astro";
       Society for the Promotion of Education and Culture”, created by a group of
       the Circassian intelligentsia in Syria led by Samugg Amin.
     </p>
-    <br />
     <p>
       <strong>Keywords:</strong>
       <em>
@@ -76,7 +74,6 @@ import PageLayout from "../../../layouts/PageLayout.astro";
       dealing with the problems of studying national history, preserving the
       language, traditions and culture of Circassians.
     </p>
-    <br />
     <p>
       Even before the collapse of the Ottoman Empire and the formation of the
       Arab states, cultural and educational activities of social, charitable and
@@ -97,7 +94,6 @@ import PageLayout from "../../../layouts/PageLayout.astro";
       Mc" ("Voice of Adyga") in Circassian language on an Arabic graphic basis
       [2, 13].
     </p>
-    <br />
     <p>
       Representatives of the Circassian diaspora in the Arab countries also
       conducted active cultural and educational activities aimed at preserving
@@ -132,7 +128,6 @@ import PageLayout from "../../../layouts/PageLayout.astro";
       plan of activities, income and expenses of the organization. May 10 was
       declared the day of the national holiday [5, p. 16].
     </p>
-    <br />
     <p>
       In Damascus in 1929, under the editorship of Balague Naubatuka, a Circassian
       primer was released, for which the alphabet was used on a Latin basis [6].
@@ -150,7 +145,6 @@ import PageLayout from "../../../layouts/PageLayout.astro";
       activity of the society lasted until 1932, after which it was closed for
       political reasons [8, c. 119].
     </p>
-    <br />
     <p>
       In 1933, with the support of the French administration, with which Samgug
       Amin cooperated, in the city. The Circassian National School of Cuneutre
@@ -195,7 +189,6 @@ import PageLayout from "../../../layouts/PageLayout.astro";
       homeland. But for this they had to be prepared ideologically and
       well-educated [9].
     </p>
-    <br />
     <p>
       Students, boys and girls, wore national clothes. The school’s music
       orchestra was recruited from the students. National dances were taught at
@@ -207,7 +200,6 @@ import PageLayout from "../../../layouts/PageLayout.astro";
       which competitions were held in various sports disciplines. Two football
       teams of Circassians living in the Golan - "Yamlidzh" and "Nucleb" [9].
     </p>
-    <br />
     <p>
       Every year in the competition among primary schools, the Circassian school
       took 1 place. Teachers worked with great enthusiasm. The school worked
@@ -229,7 +221,6 @@ import PageLayout from "../../../layouts/PageLayout.astro";
       French mandate and the creation of an independent Syrian Arab state” [8,
       118].
     </p>
-    <br />
     <p>
       In September 1936, a treaty was signed between Syria and France,
       recognizing independence as the first. The mandate was subject to
@@ -245,7 +236,6 @@ import PageLayout from "../../../layouts/PageLayout.astro";
       the society were prohibited [8, p. 120). He was removed from the post of
       chairman of the municipal council. Kuneitra Amin Samgug.
     </p>
-    <br />
     <p>
       In 1937, Samgug Amin and his associates formed a new organization "Jolan",
       which aimed to facilitate the mass return of Circassians to the Caucasus.
@@ -304,5 +294,16 @@ import PageLayout from "../../../layouts/PageLayout.astro";
       </li>
       <li>ON ISIS KBSC RAS. Famish 12, No. 5027.</li>
     </ol>
+  </section>
+  <hr />
+
+  <section id="photographs">
+    <h2>Photographs</h2>
+    <p>
+      Photographs published with the article. Each caption is shown in the
+      original Russian, followed by an English translation. See also the
+      <a href="/people/amin-samkough/images/">images page</a>.
+    </p>
+    <Gallery images={archivePhotos} />
   </section>
 </PageLayout>

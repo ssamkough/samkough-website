@@ -1,5 +1,5 @@
 ---
-import PageLayout from "../../../layouts/PageLayout.astro";
+import PageLayout from "../../../../layouts/PageLayout.astro";
 
 interface Item {
   /** Original text as read from the page. */
@@ -181,8 +181,41 @@ const samkough: Item[] = [
 
 <PageLayout title="“Marj” Newspaper, Issue No. 71 (14 August 1931)">
   <p>
-    <a href="/people/amin-samkough/">&larr; Amin Samkough</a>
+    <a href="/people/amin-samkough/">&larr; Amin Samkough</a> &middot;
+    <a href="/people/amin-samkough/research/">Research</a>
   </p>
+  <hr />
+
+  <section id="details">
+    <h2>About this page</h2>
+    <dl>
+      <dt>Item</dt>
+      <dd>
+        <span lang="ar" dir="rtl">«مارج»</span> (<em>Marj</em>), front page of
+        issue no. 71
+      </dd>
+      <dt>Published</dt>
+      <dd>
+        <time datetime="1931-08-14">14 August 1931</time> (the printed date,
+        which is also 29 Rabi‘ al-awwal 1350)
+      </dd>
+      <dt>Source</dt>
+      <dd>
+        <a href="/amin-samkough/marge-magazine.jpg">Photograph of the front page</a>
+        in this site’s collection (see below). Which archive or owner it came
+        from isn’t known.
+      </dd>
+      <dt>Language</dt>
+      <dd>Ottoman Turkish (Arabic script), with an Arabic information box</dd>
+    </dl>
+    <p>
+      <mark>
+        Review: the weekday printed on the page, Thursday, doesn’t match
+        14 August 1931, which was a Friday. See
+        <a href="#date">Publication date</a>.
+      </mark>
+    </p>
+  </section>
   <hr />
 
   <figure>
@@ -404,7 +437,7 @@ const samkough: Item[] = [
     <h2>Related</h2>
     <ul>
       <li>
-        <a href="/people/amin-samkough/circassian-school-in-syria/">
+        <a href="/people/amin-samkough/research/circassian-school-in-syria/">
           Circassian School in Syria and Its Founder – Samgug Amin
         </a>
         (describes the society and its newspaper “Marj”)
@@ -417,6 +450,15 @@ const samkough: Item[] = [
 </PageLayout>
 
 <style>
+  dt {
+    font-weight: bold;
+    margin-block-start: 0.5em;
+  }
+
+  dd {
+    margin-inline-start: 0;
+  }
+
   .items {
     list-style: none;
     margin: 0;

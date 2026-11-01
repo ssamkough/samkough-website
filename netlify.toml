@@ -4,3 +4,90 @@
 
 [build.environment]
   NODE_VERSION = "24"
+
+# Research pages moved from /people/amin-samkough/ to /people/amin-samkough/research/
+
+[[redirects]]
+  from = "/people/amin-samkough/circassian-school-in-syria/"
+  to = "/people/amin-samkough/research/circassian-school-in-syria/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/circassian-school-in-syria-full-translation/"
+  to = "/people/amin-samkough/research/circassian-school-in-syria-full-translation/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/north-caucasians-in-emigration/"
+  to = "/people/amin-samkough/research/north-caucasians-in-emigration/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/kushkhabiev-circassian-community-in-syria/"
+  to = "/people/amin-samkough/research/kushkhabiev-circassian-community-in-syria/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/khotko-circassians-in-syria/"
+  to = "/people/amin-samkough/research/khotko-circassians-in-syria/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/khotko-circassians-in-the-middle-east/"
+  to = "/people/amin-samkough/research/khotko-circassians-in-the-middle-east/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/ochag-monument-maykop/"
+  to = "/people/amin-samkough/research/ochag-monument-maykop/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/marj-newspaper/"
+  to = "/people/amin-samkough/research/marj-newspaper/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/jineps-circassian-school-and-samkough-emin/"
+  to = "/people/amin-samkough/research/jineps-circassian-school-and-samkough-emin/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/jineps-middle-east-in-the-kdhp-years/"
+  to = "/people/amin-samkough/research/jineps-middle-east-in-the-kdhp-years/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/circassian-center-emin-semsug/"
+  to = "/people/amin-samkough/research/circassian-center-emin-semsug/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/biyografi-net-emin-semsug/"
+  to = "/people/amin-samkough/research/biyografi-net-emin-semsug/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/yeni-akit-emin-semsug/"
+  to = "/people/amin-samkough/research/yeni-akit-emin-semsug/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/bilgiler-emin-semsug/"
+  to = "/people/amin-samkough/research/bilgiler-emin-semsug/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/esyria-first-mayor-of-quneitra/"
+  to = "/people/amin-samkough/research/esyria-first-mayor-of-quneitra/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/circassia-times-amin-ayyub-samkoug/"
+  to = "/people/amin-samkough/research/circassia-times-amin-ayyub-samkoug/"
+  status = 301
+
+[[redirects]]
+  from = "/people/amin-samkough/arabic-wikipedia-amin-ayyub-samkoug/"
+  to = "/people/amin-samkough/research/arabic-wikipedia-amin-ayyub-samkoug/"
+  status = 301

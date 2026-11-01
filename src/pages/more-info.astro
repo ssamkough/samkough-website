@@ -1,0 +1,240 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+
+const research = "/people/amin-samkough/research";
+---
+
+<PageLayout title="More info">
+  <section id="about">
+    <h2>About this site</h2>
+    <p>
+      This site collects information about the Samkough family. For Amin
+      Samkough it includes a biography, family and archive photographs, and a
+      <a href={`${research}/`}>research section</a> of articles, dictionary
+      entries and one newspaper page that mention him. Most of those were
+      written in Russian, Arabic or Turkish, so most of them have been
+      translated into English for this site.
+    </p>
+    <p>
+      This page explains how those translations were made and how much weight
+      to give them.
+    </p>
+  </section>
+  <hr />
+
+  <section id="who">
+    <h2>Who does the translating</h2>
+    <p>
+      The translations are made by an <strong>AI assistant</strong> working for
+      the site’s owner, not by a professional translator or a native speaker. The
+      owner picks the sources and supplies a web address, an image or pasted
+      text. The assistant then reads the original, translates it, researches the
+      date and the background, and writes the page.
+    </p>
+    <ul>
+      <li>
+        <strong>Written by the assistant:</strong> the translations and
+        summaries of the web articles, the dictionary entry, the Marj
+        newspaper page, the Wikipedia page, and the captions on the archive
+        photographs.
+      </li>
+      <li>
+        <strong>Supplied by others:</strong> the first English version of the
+        Mirzoev article (the
+        <a href={`${research}/circassian-school-in-syria/`}>first translation</a>)
+        was supplied to the site and its translator isn’t named. The
+        <a href="/people/amin-samkough/homeland-poem/">homeland poem</a> was
+        translated from Arabic by Adel Bashqawi.
+      </li>
+    </ul>
+    <p>
+      <strong>None of this has been checked by a fluent reader yet.</strong>
+      Treat every translation as a careful working draft. For anything that
+      matters, such as a date, a name or a quotation, check the original, which
+      each page links to.
+    </p>
+  </section>
+  <hr />
+
+  <section id="process">
+    <h2>How each page is made</h2>
+    <ol>
+      <li>
+        <strong>The source is read.</strong> The assistant fetches the original
+        web page, or reads the image or PDF. If a site blocks automated
+        reading, that block is respected and the owner is asked for the text or
+        the images instead.
+      </li>
+      <li>
+        <strong>It is translated.</strong> The aim is to stay close to the
+        original wording, including awkward phrasing, and to flag what is
+        unclear instead of smoothing it over.
+      </li>
+      <li>
+        <strong>Dates and background are checked.</strong> The page records
+        where the text appeared and when (see
+        <a href="#dates">Dates</a>), and compares its claims with the other
+        sources on the site.
+      </li>
+      <li>
+        <strong>Doubtful points are marked.</strong> See
+        <a href="#review">Highlighted “Review” text</a>.
+      </li>
+      <li>
+        <strong>The page is filed</strong> in the research section under the
+        language of the original (Russian, Arabic or Turkish).
+      </li>
+    </ol>
+    <p>
+      Every research page starts with an “About this page” box giving the
+      title, the author where known, the <strong>published date</strong>, the
+      <strong>source link</strong> and the language.
+    </p>
+  </section>
+  <hr />
+
+  <section id="full-or-summary">
+    <h2>Full translations, summaries and quotes</h2>
+    <p>
+      Most of the articles are other people’s published work. Rather than
+      reproduce them, most pages give a <strong>summary in the assistant’s own
+      words, a few short translated passages, and a list of things to check</strong>,
+      with a link to the original. The main exceptions are:
+    </p>
+    <ul>
+      <li>
+        <a href={`${research}/circassian-school-in-syria-full-translation/`}>The Mirzoev article</a>,
+        which is translated in full, with numbered notes.
+      </li>
+      <li>
+        <a href={`${research}/arabic-wikipedia-amin-ayyub-samkoug/`}>The Arabic Wikipedia entry</a>,
+        translated in full because Wikipedia’s text is freely licensed (CC
+        BY-SA). The page credits the authors and is shared under the same
+        license.
+      </li>
+      <li>
+        <a href={`${research}/marj-newspaper/`}>The Marj newspaper page</a> and
+        the dictionary entry, which are short and are translated in full.
+      </li>
+    </ul>
+  </section>
+  <hr />
+
+  <section id="review">
+    <h2>Highlighted “Review” text</h2>
+    <p>
+      Where something is doubtful, the page marks it, usually with the label
+      <mark>Review</mark>, and says why. A passage is flagged when:
+    </p>
+    <ul>
+      <li>the original is unclear, damaged or hard to read;</li>
+      <li>a word or name can be translated more than one way;</li>
+      <li>a claim disagrees with another source on this site;</li>
+      <li>a claim has no source, or reads like praise instead of record;</li>
+      <li>a date is missing, approximate or doesn’t add up.</li>
+    </ul>
+    <p>
+      The Marj page also gives each line a confidence rating (High, Medium or
+      Low), and the full Mirzoev translation numbers its doubtful passages
+      (†1, †2 and so on) with notes at the end. A passage that isn’t marked is
+      not guaranteed to be right. It only means the assistant had no specific
+      doubt.
+    </p>
+  </section>
+  <hr />
+
+  <section id="dates">
+    <h2>Dates</h2>
+    <p>
+      Each research page gives a published date, found in this order of
+      preference:
+    </p>
+    <ol>
+      <li>a date printed on the page or in the article;</li>
+      <li>a date in the page’s code, or in the site’s public data;</li>
+      <li>
+        the earliest copy in the Internet Archive, shown as “undated, archived
+        by …” and never as a publication date;
+      </li>
+      <li>a date from the page history, for a wiki.</li>
+    </ol>
+    <p>
+      A date on a web page is usually when <em>that copy</em> was posted. It is
+      not always when the text was written, and it can be changed afterward. So
+      pages say when the date might be late or unreliable. For example, one
+      profile’s site data gave 2020, but the archived copy showed it was posted
+      in 2019, so the page uses
+      <a href={`${research}/circassian-center-emin-semsug/`}>2019</a>. Another
+      is <a href={`${research}/biyografi-net-emin-semsug/`}>undated</a>, and
+      the page says so.
+    </p>
+  </section>
+  <hr />
+
+  <section id="independence">
+    <h2>Sources that copy each other</h2>
+    <p>
+      Many of these pages are not independent. Several Turkish profiles repeat
+      one text that goes back to 2009, an Arabic blog repeats an Arabic
+      article, and a Turkish article is a translation of the Russian one. Each
+      page says when it is a copy, and what it adds or changes. Please don’t
+      count two copies as two confirmations. Several of them seem to trace back
+      to a 2007 book, which I haven’t seen.
+    </p>
+  </section>
+  <hr />
+
+  <section id="conflicts">
+    <h2>When sources disagree</h2>
+    <p>
+      The sources disagree about basic facts, and the site does not pick a
+      winner. For example, his birth year is given as 1900 in some and 1903 in
+      others, his death as 1952 or 1953, and the years he was mayor, a member
+      of parliament, and when the school opened all differ. Each page lists its
+      conflicts with the others. If you need one figure, treat these as open
+      questions until a primary document turns up.
+    </p>
+  </section>
+  <hr />
+
+  <section id="names">
+    <h2>Spelling of names</h2>
+    <p>
+      His name appears in many spellings because it passes through different
+      alphabets: <em>Samgug</em> (from Russian), <em>Samkough</em> (the spelling
+      used for this site), <em>Samkoug</em> (from Arabic), and <em>Semsuğ</em>
+      or <em>Semguğ</em> (Turkish). The first name is <em>Amin</em> in Arabic
+      and Russian, and <em>Emin</em> in Turkish. Pages keep the spelling used
+      by their source and say so, and place and organization names are
+      transliterated in the same way.
+    </p>
+  </section>
+  <hr />
+
+  <section id="limits">
+    <h2>Known limits</h2>
+    <ul>
+      <li>
+        Machine translation can be wrong in ways that read smoothly,
+        particularly for names, titles, dates, idioms and the older Ottoman
+        Turkish.
+      </li>
+      <li>
+        Handwriting on the photographs, and the printed text of the Marj page,
+        were read from images and may contain misreadings.
+      </li>
+      <li>
+        Historical claims in the sources have mostly not been checked against
+        archives. The pages compare sources with each other but don’t settle
+        who is right.
+      </li>
+      <li>
+        Pages are updated when better evidence turns up, so a date or a
+        conclusion may change.
+      </li>
+    </ul>
+    <p>
+      Back to the <a href={`${research}/`}>research section</a>.
+    </p>
+  </section>
+</PageLayout>

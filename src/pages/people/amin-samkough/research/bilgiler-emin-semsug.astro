@@ -1,0 +1,173 @@
+---
+import PageLayout from "../../../../layouts/PageLayout.astro";
+
+const sourceUrl = "https://www.bilgiler.gen.tr/emin-semsug.html";
+const longVersion = "/people/amin-samkough/research/circassian-center-emin-semsug/";
+---
+
+<PageLayout title="“Emin Semsuğ” (Bilgiler)">
+  <p>
+    <a href="/people/amin-samkough/">&larr; Amin Samkough</a> &middot;
+    <a href="/people/amin-samkough/research/">Research</a>
+  </p>
+  <hr />
+
+  <section id="details">
+    <h2>About this page</h2>
+    <dl>
+      <dt>Article</dt>
+      <dd>
+        <span lang="tr">«Emin Semsuğ»</span> (“Emin Semsuğ”), a biographical
+        entry
+      </dd>
+      <dt>Website</dt>
+      <dd>
+        <span lang="tr">Bilgiler</span> (“Information”), a Turkish general
+        knowledge site
+      </dd>
+      <dt>Author</dt>
+      <dd>None given</dd>
+      <dt>Published</dt>
+      <dd>
+        <time datetime="2009-12-08T20:18">8 December 2009, 20:18</time> (the page
+        shows <span lang="tr">«08/12/2009 20:18»</span>, day first, and its page
+        code gives <span lang="tr">2009-12-08T20:18</span>; no time zone)
+      </dd>
+      <dt>Source</dt>
+      <dd>
+        <a href={sourceUrl}>{sourceUrl}</a>
+      </dd>
+      <dt>Language</dt>
+      <dd>Turkish</dd>
+    </dl>
+    <p>
+      <mark>
+        Review: <strong>the date.</strong> The page doesn’t say whether this is
+        when the entry was posted or last edited. The page invites readers to
+        “add new information”, which suggests that the site accepts
+        contributions, so the entry may have been changed since. I found no
+        Internet Archive copy to check it against. Still, this is the
+        <strong>earliest-dated</strong> appearance of this text that I’ve
+        found.
+      </mark>
+    </p>
+  </section>
+  <hr />
+
+  <section id="same-text">
+    <h2>This is the same text as the Circassian Center profile</h2>
+    <p>
+      The body of this entry is, word for word as far as I can see, the
+      <a href={longVersion}>Circassian Center profile “Emin Semsuğ”</a>, down
+      to the same list of works and the same spelling slip (“Semguğ” for his
+      father). The Circassian Center page and
+      <a href="/people/amin-samkough/research/biyografi-net-emin-semsug/">Biyografi.Net</a>
+      carry it with later dates, and the
+      <a href="/people/amin-samkough/research/yeni-akit-emin-semsug/">Yeni Akit entry</a>
+      (27 October 2016) looks like a shortened version of it. So the others
+      are probably copies of this one, or of whatever it came from, and
+      <strong>none of them is an independent source</strong>.
+    </p>
+    <p>
+      Because it is someone else’s published work, I haven’t translated it in
+      full. The Circassian Center page has the full summary, the translated
+      passages and the review items, and I haven’t repeated them here. Please
+      have a Turkish reader check my translations.
+    </p>
+    <h3>What differs</h3>
+    <ul>
+      <li>
+        The page gives only the name as the title, with no summary line and no
+        “writer, publisher” label (which Biyografi.Net added).
+      </li>
+      <li>
+        The text is one block, with the works list run into the same
+        paragraph. It uses “öldü” (“died”) for his death, as Circassian Center
+        does.
+      </li>
+      <li>
+        A comment section at the bottom says “nobody has commented yet”.
+      </li>
+      <li>
+        The page image is a generic placeholder, not a photo of him.
+      </li>
+    </ul>
+  </section>
+  <hr />
+
+  <section id="review">
+    <h2>Things to review</h2>
+    <ul class="review">
+      <li>
+        <mark>
+          Review: <strong>unknown origin.</strong> Even the oldest copy has no
+          author and no source. The text reads like an encyclopedia entry
+          (“Eserleri”, “Works”), and may come from a printed reference book, but
+          I haven’t found it. Whoever it came from is the real source of every
+          claim below, and no one on these pages can be checked.
+        </mark>
+      </li>
+      <li>
+        <mark>
+          Review: <strong>claims that conflict with other sources on this
+          site.</strong> The same ones as on the Circassian Center page:
+          life dates (1900–1952 against 1900–1953 or 1903–1952), the birthplace
+          (Mansure against Quneitra), the studies in France against Mirzoev’s
+          Beirut and the Sorbonne, the 1937 trading company against “Jolan”,
+          the newspaper’s dates and languages, the place and year of his books
+          (Homs 1948 against Amman 1984), the school details, and the
+          unsourced family history and Druze mediation.
+        </mark>
+      </li>
+      <li>
+        <mark>
+          Review: <strong>spelling.</strong> The title says “Semsuğ”, but the
+          text calls his father “Semguğ”.
+        </mark>
+      </li>
+      <li>
+        <mark>
+          Review: <strong>the 1980s book.</strong> The text says the
+          <em>Introduction</em> was published after his death “in the 1980s”.
+          That is consistent with Mirzoev’s 1984, but the text gives no place.
+        </mark>
+      </li>
+    </ul>
+  </section>
+  <hr />
+
+  <section id="translation-notes">
+    <h2>Translation notes</h2>
+    <ul>
+      <li>
+        I have not translated any new passages from this page, because it adds
+        none. The Circassian Center page translates the same sentences.
+      </li>
+    </ul>
+    <p>
+      Read the full entry in Turkish at
+      <a href={sourceUrl}>bilgiler.gen.tr</a>.
+    </p>
+  </section>
+</PageLayout>
+
+<style>
+  dt {
+    font-weight: bold;
+    margin-block-start: 0.5em;
+  }
+
+  dd {
+    margin-inline-start: 0;
+  }
+
+  .review {
+    list-style: none;
+    margin-inline: 0;
+    padding: 0;
+  }
+
+  .review li + li {
+    margin-block-start: 0.5em;
+  }
+</style>

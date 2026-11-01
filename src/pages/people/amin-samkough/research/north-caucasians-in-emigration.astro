@@ -1,11 +1,39 @@
 ---
-import PageLayout from "../../../layouts/PageLayout.astro";
+import PageLayout from "../../../../layouts/PageLayout.astro";
 ---
 
 <PageLayout title="Amin Samkough in “North Caucasians in Emigration in the 20th Century”">
   <p>
-    <a href="/people/amin-samkough/">&larr; Amin Samkough</a>
+    <a href="/people/amin-samkough/">&larr; Amin Samkough</a> &middot;
+    <a href="/people/amin-samkough/research/">Research</a>
   </p>
+  <hr />
+
+  <section id="details">
+    <h2>About this page</h2>
+    <dl>
+      <dt>Work</dt>
+      <dd>
+        <span lang="ru">«Северокавказцы в эмиграции в ХХ веке. Материалы к
+        биографическому словарю»</span> (“North Caucasians in Emigration in the
+        20th Century: Materials for a Biographical Dictionary”), entry
+        <span lang="ru">«САМГУГ Амин»</span>
+      </dd>
+      <dt>Authors</dt>
+      <dd>I. L. Babich, T. L. Gladkova and L. A. Mnukhin; edited by A. N. Kozhanovsky</dd>
+      <dt>Published</dt>
+      <dd>
+        <time datetime="2020">2020</time>, Moscow and Berlin, Direct-Media
+        (ISBN 978-5-4499-1574-0). The exact date isn’t given.
+      </dd>
+      <dt>Source</dt>
+      <dd>
+        <a href="https://static.iea.ras.ru/news/Severokavkazcy_v_emigracii.pdf">PDF from the Institute of Ethnology and Anthropology (iea.ras.ru)</a>
+      </dd>
+      <dt>Language</dt>
+      <dd>Russian</dd>
+    </dl>
+  </section>
   <hr />
 
   <section id="entry">
@@ -95,6 +123,15 @@ import PageLayout from "../../../layouts/PageLayout.astro";
 </PageLayout>
 
 <style>
+  dt {
+    font-weight: bold;
+    margin-block-start: 0.5em;
+  }
+
+  dd {
+    margin-inline-start: 0;
+  }
+
   blockquote {
     margin-inline: 0;
     padding-inline-start: 1em;

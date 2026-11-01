@@ -1,0 +1,150 @@
+---
+import PageLayout from "../../../../layouts/PageLayout.astro";
+
+interface Article {
+  slug: string;
+  title: string;
+  note: string;
+}
+
+const base = "/people/amin-samkough/research";
+
+const russian: Article[] = [
+  {
+    slug: "kushkhabiev-circassian-community-in-syria",
+    title: "“The Circassian Community in Syria” by A. V. Kushkhabiev",
+    note: "Intercircass, published 29 May 2012; summary with selected translations",
+  },
+  {
+    slug: "khotko-circassians-in-syria",
+    title:
+      "“Circassians in Syria in the Ottoman Era and in the 20th Century” by S. Khotko",
+    note: "Intercircass, published 29 December 2012; summary with selected translations",
+  },
+  {
+    slug: "khotko-circassians-in-the-middle-east",
+    title: "“Circassians in the Middle East in the Ottoman Era” by S. Khotko",
+    note: "Kavkazoved, published 5 August 2013; same text as the Intercircass article above",
+  },
+  {
+    slug: "circassian-school-in-syria",
+    title: "Circassian School in Syria and Its Founder – Samgug Amin",
+    note: "article by Aslanbek Sultanovich Mirzoev, 2019; first translation, with the archive photographs",
+  },
+  {
+    slug: "circassian-school-in-syria-full-translation",
+    title:
+      "Circassian School in Syria and Its Founder – Samgug Amin (full translation with notes)",
+    note: "translated from the journal PDF, Vestnik KBIGI, 2019",
+  },
+  {
+    slug: "north-caucasians-in-emigration",
+    title: "Dictionary entry: North Caucasians in Emigration in the 20th Century",
+    note: "2020 biographical dictionary, with translation",
+  },
+  {
+    slug: "ochag-monument-maykop",
+    title: "The “Ochag” (Unity and Concord) monument in Maykop",
+    note: "Wind of Travel, published 26 April 2020; summary with selected translations",
+  },
+];
+
+const arabic: Article[] = [
+  {
+    slug: "arabic-wikipedia-amin-ayyub-samkoug",
+    title: "“Amin Ayyub Samkoug” (Arabic Wikipedia)",
+    note: "page created 13 November 2008; full translation, with the page history",
+  },
+  {
+    slug: "esyria-first-mayor-of-quneitra",
+    title: "“The First Mayor in Quneitra” (eSyria)",
+    note: "published 27 September 2011; summary with selected translations",
+  },
+  {
+    slug: "circassia-times-amin-ayyub-samkoug",
+    title:
+      "“A Glimpse of the Circassian Man of Letters Amin Ayyub Samkoug” (Circassia Times)",
+    note: "published 18 February 2016; mostly the same text as the eSyria article, with additions",
+  },
+];
+
+const turkish: Article[] = [
+  {
+    slug: "marj-newspaper",
+    title: "“Marj” newspaper, issue no. 71 (14 August 1931)",
+    note: "Ottoman Turkish, with an Arabic box on the front page; transcription and translation",
+  },
+  {
+    slug: "bilgiler-emin-semsug",
+    title: "“Emin Semsuğ” (Bilgiler)",
+    note: "dated 8 December 2009; the earliest-dated copy of the Circassian Center profile text",
+  },
+  {
+    slug: "yeni-akit-emin-semsug",
+    title: "“Who Is Emin Semsuğ?” (Yeni Akit)",
+    note: "published 27 October 2016; short entry, with a summary and selected translations",
+  },
+  {
+    slug: "circassian-center-emin-semsug",
+    title: "“Emin Semsuğ” (Circassian Center)",
+    note: "published 22 March 2019; unsigned profile, with a summary and selected translations",
+  },
+  {
+    slug: "biyografi-net-emin-semsug",
+    title: "“Emin Semsuğ” (Biyografi.Net)",
+    note: "undated, archived by 19 February 2025; copy of the Circassian Center profile",
+  },
+  {
+    slug: "jineps-circassian-school-and-samkough-emin",
+    title: "“The Circassian School in Syria and Samkough Emin” (Jineps Gazetesi)",
+    note: "published 1 August 2022; Turkish translation of the Mirzoev article, with a summary and translation differences",
+  },
+  {
+    slug: "jineps-middle-east-in-the-kdhp-years",
+    title: "“The Middle East in the KDHP Years” by Ömer Aytek Kurmel (Jineps Gazetesi)",
+    note: "published 1 January 2025; one sentence on Samkough, with a summary and selected translations",
+  },
+];
+
+const sections = [
+  { id: "russian", heading: "Russian", articles: russian },
+  { id: "arabic", heading: "Arabic", articles: arabic },
+  { id: "turkish", heading: "Turkish", articles: turkish },
+];
+---
+
+<PageLayout title="Research">
+  <p>
+    <a href="/people/amin-samkough/">&larr; Amin Samkough</a>
+  </p>
+  <p>
+    Translated articles, entries and primary sources about Amin Samkough, grouped
+    by the language of the original and listed oldest first within each group.
+    How these were translated, and how far to trust them, is explained on the
+    <a href="/more-info/">More info</a> page. Jump to: {
+      sections.map((section, i) => (
+        <>
+          {i > 0 && " · "}
+          <a href={`#${section.id}`}>{section.heading}</a>
+        </>
+      ))
+    }.
+  </p>
+  <hr />
+
+  {
+    sections.map((section) => (
+      <section id={section.id}>
+        <h2>{section.heading}</h2>
+        <ul>
+          {section.articles.map((article) => (
+            <li>
+              <a href={`${base}/${article.slug}/`}>{article.title}</a>
+              <p>({article.note})</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</PageLayout>

@@ -1,23 +1,64 @@
 ---
-import PageLayout from "../../../layouts/PageLayout.astro";
-import Gallery from "../../../components/Gallery.astro";
-import { archivePhotos } from "../../../data/archive-photos";
+import PageLayout from "../../../../layouts/PageLayout.astro";
+import Gallery from "../../../../components/Gallery.astro";
+import { archivePhotos } from "../../../../data/archive-photos";
 ---
 
 <PageLayout title="Circassian School in Syria and Its Founder – Samgug Amin">
   <p>
-    <a href="/people/amin-samkough/">&larr; Amin Samkough</a>
+    <a href="/people/amin-samkough/">&larr; Amin Samkough</a> &middot;
+    <a href="/people/amin-samkough/research/">Research</a>
   </p>
-  <p>
-    Source:
-    <cite>
-      <a
-        href="https://aheku.net/articles/russian/istoriya-adyigov/cherkesskaya-shkola-v-sirii-i-ee-osnovatel-samgug-amin"
-      >
-        https://aheku.net/articles/russian/istoriya-adyigov/cherkesskaya-shkola-v-sirii-i-ee-osnovatel-samgug-amin
-      </a>
-    </cite>
-  </p>
+  <hr />
+
+  <section id="details">
+    <h2>About this page</h2>
+    <dl>
+      <dt>Article</dt>
+      <dd>
+        <span lang="ru">«Черкесская школа в Сирии и её основатель Самгуг
+        Амин»</span> (“The Circassian School in Syria and Its Founder, Samgug
+        Amin”)
+      </dd>
+      <dt>Author</dt>
+      <dd>
+        Aslanbek Sultanovich Mirzoev (<span lang="ru">Мирзоев Асланбек
+        Султанович</span>), Candidate of Historical Sciences
+      </dd>
+      <dt>Published</dt>
+      <dd>
+        <time datetime="2019">2019</time>, in the journal <em>Vestnik KBIGI</em>
+        (Bulletin of the Kabardino-Balkarian Institute for Humanities Research),
+        No. 4-2 (43), pp. 35–39 (the exact date isn’t given). Reposted on
+        aheku.net on a date the site doesn’t show.
+      </dd>
+      <dt>Source</dt>
+      <dd>
+        <a
+          href="https://aheku.net/articles/russian/istoriya-adyigov/cherkesskaya-shkola-v-sirii-i-ee-osnovatel-samgug-amin"
+        >
+          aheku.net (Russian)
+        </a>
+        · journal original:
+        <a href="https://doi.org/10.31007/2306-5826-2019-4-2-43-35-39">DOI 10.31007/2306-5826-2019-4-2-43-35-39</a>
+      </dd>
+      <dt>Language</dt>
+      <dd>Russian</dd>
+      <dt>Translation</dt>
+      <dd>
+        An earlier, rough English translation (the translator isn’t named). A
+        corrected one with notes is on the
+        <a href="/people/amin-samkough/research/circassian-school-in-syria-full-translation/">full translation page</a>.
+      </dd>
+    </dl>
+    <p>
+      <mark>
+        Review: the year, 2019. The DOI registry lists 1 January 2019, which is
+        probably a placeholder for “2019”. The article cites an interview
+        recorded on 21 September 2019, so it was finished after that date.
+      </mark>
+    </p>
+  </section>
   <hr />
 
   <section id="abstract">
@@ -307,3 +348,14 @@ import { archivePhotos } from "../../../data/archive-photos";
     <Gallery images={archivePhotos} />
   </section>
 </PageLayout>
+
+<style>
+  dt {
+    font-weight: bold;
+    margin-block-start: 0.5em;
+  }
+
+  dd {
+    margin-inline-start: 0;
+  }
+</style>

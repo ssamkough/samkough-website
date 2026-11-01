@@ -1,0 +1,120 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import { texts, seriesParts, type Text } from "../../data/texts";
+
+export function getStaticPaths() {
+  return texts.map((text) => ({
+    params: { slug: text.slug },
+    props: { text },
+  }));
+}
+
+const { text } = Astro.props as { text: Text };
+const parts = seriesParts(text);
+---
+
+<PageLayout title={text.title}>
+  <p>
+    <a href="/texts/">&larr; Texts</a>
+  </p>
+  <hr />
+
+  <section>
+    <dl>
+      <dt>Title</dt>
+      <dd>
+        {text.title}
+        {text.subtitle && <> {text.subtitle}</>}
+        <br />
+        <span lang="ar" dir="rtl">
+          {text.arabicTitle}
+          {text.arabicSubtitle && <> {text.arabicSubtitle}</>}
+        </span>
+        {
+          text.frenchTitle && (
+            <>
+              <br />
+              <span lang="fr">{text.frenchTitle}</span>
+            </>
+          )
+        }
+      </dd>
+      <dt>Author</dt>
+      <dd>
+        {text.authorHref ? <a href={text.authorHref}>{text.author}</a> : text.author}
+        (<span lang="ar" dir="rtl">{text.arabicAuthor}</span>)
+      </dd>
+      {
+        text.kind && (
+          <>
+            <dt>Kind</dt>
+            <dd>{text.kind}</dd>
+          </>
+        )
+      }
+      {
+        text.series && (
+          <>
+            <dt>Series</dt>
+            <dd>
+              {text.series.name}, part {text.series.part} of {parts.length}
+            </dd>
+          </>
+        )
+      }
+      <dt>Language</dt>
+      <dd>Arabic</dd>
+    </dl>
+
+    <figure>
+      <img
+        src={text.cover.file}
+        alt={text.cover.alt}
+        width={text.cover.width}
+        height={text.cover.height}
+      />
+      <figcaption>Cover of “{text.title}”.</figcaption>
+    </figure>
+
+    {text.notes?.map((note) => <p>{note}</p>)}
+
+    {
+      parts.length > 1 && (
+        <p>
+          Other parts of {text.series!.name}:
+          {parts
+            .filter((part) => part.slug !== text.slug)
+            .map((part, i) => (
+              <>
+                {i > 0 ? ", " : " "}
+                <a href={`/texts/${part.slug}/`}>part {part.series!.part}</a>
+              </>
+            ))}
+        </p>
+      )
+    }
+  </section>
+</PageLayout>
+
+<style>
+  dt {
+    font-weight: bold;
+    margin-block-start: 0.5em;
+  }
+
+  dd {
+    margin-inline-start: 0;
+  }
+
+  img {
+    max-width: min(100%, 24rem);
+    height: auto;
+    border: 1px solid #ddd;
+  }
+
+  figcaption {
+    font-size: 0.85em;
+    color: #555;
+    margin-block-start: 0.4em;
+  }
+</style>

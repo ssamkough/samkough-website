@@ -9,9 +9,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "private": "node --env-file-if-exists=.env scripts/private-files.mjs"
   },
   "dependencies": {
+    "@netlify/blobs": "^11.1.7",
     "astro": "^7.4.4"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^6.0.3"
   }
 }

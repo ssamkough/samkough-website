@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# netlify dev local state
+.netlify/
+
+# keep private documents out of this public repo
+private/

@@ -5,6 +5,16 @@
 [build.environment]
   NODE_VERSION = "24"
 
+[functions]
+  directory = "netlify/functions"
+
+# The private files page and its API shouldn't be indexed or cached.
+[[headers]]
+  for = "/private/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
 # Research pages moved from /people/amin-samkough/ to /people/amin-samkough/research/
 
 [[redirects]]

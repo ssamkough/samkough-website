@@ -9,6 +9,8 @@ export interface Person {
   died?: string;
   /** Set to true for people who are alive, so no death date is shown. */
   living?: boolean;
+  /** Set to true when someone has died but the date isn't known. */
+  deceased?: boolean;
   birthplace?: string;
   /** Where they died. Only shown when set. */
   deathplace?: string;
@@ -59,6 +61,8 @@ export const familyTree: Person = {
               name: "Zaramouk Samkough",
               born: "4 January 1933",
               birthplace: "Mansura, Syria",
+              died: "1991",
+              burialPlace: "Fair Lawn Cemetery",
               spouses: [{ name: "Jean Khonako" }],
               children: [
                 { name: "Adham Samkough" },
@@ -69,6 +73,7 @@ export const familyTree: Person = {
             },
             {
               name: "Barzaj Samkough",
+              href: "/people/barzaj-samkough/",
               children: [{ name: "Radwan Samkough" }, { name: "Narina Samkough" }],
             },
             {
@@ -86,7 +91,38 @@ export const familyTree: Person = {
           label: "Possible brother of Amin Samkough",
           note: "Unconfirmed. It isn't certain that Amin had a brother.",
         },
-        { name: "Naljea Samkough" },
+        {
+          name: "Naljeah Samkough",
+          // Listed oldest to youngest within each group; the combined birth
+          // order of sons and daughters isn't known.
+          children: [
+            {
+              name: "Nihad",
+              label: "Known as Khalo Nihad",
+              deceased: true,
+            },
+            { name: "Abdul-Hadi", deceased: true },
+            { name: "Khalid", living: true },
+            {
+              name: "Satanai",
+              label: "Known as Khalto Satanai",
+              deceased: true,
+            },
+            {
+              name: "Hatsats",
+              deceased: true,
+              note: "The name is also spelled Hasas.",
+            },
+            { name: "Khaireih", deceased: true },
+            { name: "Hourieh", living: true },
+            { name: "Thaneih", deceased: true },
+            {
+              name: "Afeirah",
+              living: true,
+              note: "The name is also spelled Afira.",
+            },
+          ],
+        },
       ],
     },
   ],

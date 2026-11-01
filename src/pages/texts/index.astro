@@ -1,0 +1,68 @@
+---
+import { seriesParts, texts } from "../../data/texts";
+import PageLayout from "../../layouts/PageLayout.astro";
+
+// Show a series once, at the position of its first part.
+const seen = new Set<string>();
+const entries = texts.flatMap((text) => {
+  const name = text.series?.name;
+  if (!name) return [{ text, parts: [] }];
+  if (seen.has(name)) return [];
+  seen.add(name);
+  return [{ text, parts: seriesParts(text), name }];
+});
+---
+
+<PageLayout title="Texts">
+  <p>
+    Books written by members of the Samkough family. For now each page shows the
+    book&apos;s cover.
+  </p>
+  <ul class="texts">
+    {
+      entries.map(({ text, parts, name }) => (
+        <li>
+          {name ? (
+            <>
+              <strong>{name}</strong>
+              <span class="by"> by {text.author}</span>
+              <ul>
+                {parts.map((part) => (
+                  <li>
+                    <a href={`/texts/${part.slug}/`}>
+                      Part {part.series!.part}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <>
+              <a href={`/texts/${text.slug}/`}>{text.title}</a>
+              <span class="by"> by {text.author}</span>
+            </>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</PageLayout>
+
+<style>
+  .texts {
+    margin-left: 0;
+    list-style: none;
+  }
+
+  .texts > li {
+    margin-block-end: 0.75rem;
+  }
+
+  .texts ul {
+    margin-left: 1em;
+  }
+
+  .by {
+    color: #555;
+  }
+</style>

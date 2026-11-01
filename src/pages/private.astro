@@ -1,0 +1,154 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<PageLayout title="Private files">
+  <div id="app" hidden>
+    <section id="login" hidden>
+      <p>These files are shared with family only. Enter the password to view them.</p>
+      <form id="login-form">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+        />
+        <button type="submit">View files</button>
+        <p id="login-error" role="alert" hidden></p>
+      </form>
+    </section>
+
+    <section id="files" hidden>
+      <p>
+        <button type="button" id="logout">Sign out</button>
+      </p>
+      <p id="empty" hidden>No files have been added yet.</p>
+      <ul id="file-list"></ul>
+    </section>
+  </div>
+  <noscript>
+    <p>This page needs JavaScript to sign in and list the files.</p>
+  </noscript>
+</PageLayout>
+
+<script>
+  const app = document.querySelector<HTMLElement>("#app")!;
+  const login = document.querySelector<HTMLElement>("#login")!;
+  const files = document.querySelector<HTMLElement>("#files")!;
+  const form = document.querySelector<HTMLFormElement>("#login-form")!;
+  const password = document.querySelector<HTMLInputElement>("#password")!;
+  const error = document.querySelector<HTMLElement>("#login-error")!;
+  const list = document.querySelector<HTMLUListElement>("#file-list")!;
+  const empty = document.querySelector<HTMLElement>("#empty")!;
+
+  interface PrivateFile {
+    key: string;
+    title: string;
+    description: string;
+    uploaded: string;
+    size: number | null;
+  }
+
+  const formatSize = (bytes: number | null) => {
+    if (!bytes) return "";
+    return bytes < 1024 * 1024
+      ? `${Math.max(1, Math.round(bytes / 1024))} KB`
+      : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  };
+
+  function render(items: PrivateFile[]) {
+    list.replaceChildren();
+    empty.hidden = items.length > 0;
+    for (const item of items) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = `/api/private/files/${encodeURIComponent(item.key)}`;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = item.title;
+      li.append(a);
+
+      const details = [formatSize(item.size), item.uploaded && `added ${item.uploaded}`]
+        .filter(Boolean)
+        .join(", ");
+      if (details) li.append(` (PDF, ${details})`);
+      if (item.description) {
+        const p = document.createElement("p");
+        p.textContent = item.description;
+        li.append(p);
+      }
+      list.append(li);
+    }
+  }
+
+  async function load() {
+    const res = await fetch("/api/private/files", { credentials: "same-origin" });
+    app.hidden = false;
+    if (res.ok) {
+      const data = (await res.json()) as { files: PrivateFile[] };
+      login.hidden = true;
+      files.hidden = false;
+      render(data.files);
+    } else {
+      files.hidden = true;
+      login.hidden = false;
+    }
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    error.hidden = true;
+    const res = await fetch("/api/private/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: password.value }),
+    });
+    if (res.ok) {
+      password.value = "";
+      await load();
+    } else {
+      error.textContent =
+        res.status === 401
+          ? "That password isn't right."
+          : "Something went wrong. Please try again.";
+      error.hidden = false;
+    }
+  });
+
+  document.querySelector("#logout")!.addEventListener("click", async () => {
+    await fetch("/api/private/logout", { method: "POST" });
+    await load();
+  });
+
+  load();
+</script>
+
+<style>
+  form {
+    display: grid;
+    gap: 0.5rem;
+    max-width: 20rem;
+    margin-block-start: 1rem;
+  }
+
+  input,
+  button {
+    min-height: 44px;
+    padding-inline: 0.75rem;
+  }
+
+  #login-error {
+    color: #a00;
+  }
+
+  #file-list {
+    margin-left: 0;
+    list-style: none;
+  }
+
+  #file-list li {
+    margin-block-end: 1rem;
+  }
+</style>

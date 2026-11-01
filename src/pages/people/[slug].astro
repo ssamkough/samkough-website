@@ -1,0 +1,16 @@
+---
+import PersonLayout from "../../layouts/PersonLayout.astro";
+import { people } from "../../data/people";
+
+export function getStaticPaths() {
+  // People with their own hand-written page, such as pages/people/amin-samkough/.
+  const customPages = new Set(["amin-samkough"]);
+  return people
+    .filter((record) => !customPages.has(record.slug))
+    .map((record) => ({ params: { slug: record.slug } }));
+}
+
+const { slug } = Astro.params;
+---
+
+<PersonLayout slug={slug!} />

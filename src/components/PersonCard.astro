@@ -1,5 +1,6 @@
 ---
 import type { Person } from "../data/family-tree";
+import { personPath } from "../data/people";
 
 interface Props {
   person: Person;
@@ -10,6 +11,7 @@ interface Props {
 const { person } = Astro.props;
 const label = Astro.props.label ?? person.label;
 const unknown = (value?: string) => value ?? "Unknown";
+const page = personPath(person);
 const isUnknownName = person.name === "Unknown";
 const died = person.living
   ? "Living"
@@ -48,11 +50,9 @@ const died = person.living
     </dl>
     {person.note && <p class="note">{person.note}</p>}
     {
-      (person.href || person.sources?.length) && (
+      (page || person.sources?.length) && (
         <div class="links">
-          {person.href && (
-            <a href={person.href}>{`Page for ${person.name}`}</a>
-          )}
+          {page && <a href={page}>{`Page for ${person.name}`}</a>}
           {person.sources?.map((source) => (
             <a href={source.href}>{source.label}</a>
           ))}

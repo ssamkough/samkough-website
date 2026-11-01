@@ -15,7 +15,18 @@ export interface Person {
   /** Where they died. Only shown when set. */
   deathplace?: string;
   burialPlace?: string;
-  /** Page on this site about the person. Links their name. */
+  /** Set when known. Used for words like "Father" on person pages. */
+  gender?: "male" | "female";
+  /** Name in Arabic script, shown on the person's page. */
+  arabicName?: string;
+  /** Other ways the name is written, shown on the person's page. */
+  otherSpellings?: string[];
+  /** Paragraphs of background shown on the person's page. */
+  summary?: string[];
+  /**
+   * Set to link the person's name in the family tree to their page. Every
+   * named person has a page at /people/<name>/ whether or not this is set.
+   */
   href?: string;
   /** Pages on this site that the details come from. */
   sources?: { label: string; href: string }[];
@@ -32,10 +43,12 @@ export interface Person {
  */
 export const familyTree: Person = {
   name: "Unknown",
+  gender: "male",
   label: "Grandfather of Amin Samkough",
   children: [
     {
       name: "Ayoub Samkough",
+      gender: "male",
       label: "Father of Amin Samkough",
       died: "1911",
       deathplace: "Tripoli, Libya",
@@ -49,6 +62,8 @@ export const familyTree: Person = {
       children: [
         {
           name: "Amin Samkough",
+          gender: "male",
+          arabicName: "أمين سمكوغ",
           href: "/people/amin-samkough/",
           born: "1900",
           died: "May 1952",
@@ -59,6 +74,7 @@ export const familyTree: Person = {
           children: [
             {
               name: "Zaramouk Samkough",
+              gender: "male",
               born: "4 January 1933",
               birthplace: "Mansura, Syria",
               died: "1991",
@@ -73,6 +89,13 @@ export const familyTree: Person = {
             },
             {
               name: "Barzaj Samkough",
+              gender: "male",
+              arabicName: "برزج سمكوغ",
+              otherSpellings: ["Burzaj"],
+              summary: [
+                "Barzaj Samkough is a son of Amin Samkough and the author of the books listed below. The Amin Samkough biography, which spells his name “Burzaj”, says that after his father’s death he issued a book called “An Introduction to Circassian History”, an introduction to Amin’s own “History of the Circassians”.",
+                "The cover of “An Introduction to the History of the Circassians” names Amin Samkough as its author.",
+              ],
               href: "/people/barzaj-samkough/",
               children: [{ name: "Radwan Samkough" }, { name: "Narina Samkough" }],
             },
@@ -98,26 +121,30 @@ export const familyTree: Person = {
           children: [
             {
               name: "Nihad",
+              gender: "male",
               label: "Known as Khalo Nihad",
               deceased: true,
             },
-            { name: "Abdul-Hadi", deceased: true },
-            { name: "Khalid", living: true },
+            { name: "Abdul-Hadi", gender: "male", deceased: true },
+            { name: "Khalid", gender: "male", living: true },
             {
               name: "Satanai",
+              gender: "female",
               label: "Known as Khalto Satanai",
               deceased: true,
             },
             {
               name: "Hatsats",
+              gender: "female",
               deceased: true,
               note: "The name is also spelled Hasas.",
             },
-            { name: "Khaireih", deceased: true },
-            { name: "Hourieh", living: true },
-            { name: "Thaneih", deceased: true },
+            { name: "Khaireih", gender: "female", deceased: true },
+            { name: "Hourieh", gender: "female", living: true },
+            { name: "Thaneih", gender: "female", deceased: true },
             {
               name: "Afeirah",
+              gender: "female",
               living: true,
               note: "The name is also spelled Afira.",
             },

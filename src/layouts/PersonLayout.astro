@@ -1,0 +1,207 @@
+---
+// The page for one person in the family tree. Details come from
+// src/data/family-tree.ts. Pass a default slot to add extra sections, such as
+// links to a biography.
+import PageLayout from "./PageLayout.astro";
+import { getPersonRecord, isNamed, personPath } from "../data/people";
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const record = getPersonRecord(slug);
+if (!record) throw new Error(`No person in the family tree has the page "${slug}".`);
+
+const { person, parent, spouses, children, siblings, works } = record;
+const hasExtra = Astro.slots.has("default");
+
+const parentLabel =
+  parent?.gender === "male"
+    ? "Father"
+    : parent?.gender === "female"
+      ? "Mother"
+      : "Parent";
+
+const place = (date?: string, where?: string) =>
+  [date, where].filter(Boolean).join(", ") || "Unknown";
+
+const born = place(person.born, person.birthplace);
+const died = person.living
+  ? "Living"
+  : place(person.died ?? (person.deceased ? "Deceased" : undefined), person.deathplace);
+const showBuried = !person.living;
+---
+
+<PageLayout title={person.name}>
+  <section id="about">
+    <dl>
+      <dt>Name</dt>
+      <dd>
+        {person.name}
+        {person.arabicName && <>(<span lang="ar" dir="rtl">{person.arabicName}</span>)</>}
+      </dd>
+      {
+        person.otherSpellings && (
+          <>
+            <dt>Spelling</dt>
+            <dd>
+              Also written {person.otherSpellings.map((s) => `“${s}”`).join(", ")}
+            </dd>
+          </>
+        )
+      }
+      {
+        parent && (
+          <>
+            <dt>{parentLabel}</dt>
+            <dd>
+              {personPath(parent) ? (
+                <a href={personPath(parent)}>{parent.name}</a>
+              ) : (
+                parent.name
+              )}
+            </dd>
+          </>
+        )
+      }
+      {
+        spouses.length > 0 && (
+          <>
+            <dt>Spouse</dt>
+            <dd>
+              {spouses.map((spouse, i) => (
+                <>
+                  {i > 0 && ", "}
+                  <a href={personPath(spouse)}>{spouse.name}</a>
+                </>
+              ))}
+            </dd>
+          </>
+        )
+      }
+      <dt>Born</dt>
+      <dd>{born}</dd>
+      <dt>Died</dt>
+      <dd>{died}</dd>
+      {
+        showBuried && (
+          <>
+            <dt>Buried</dt>
+            <dd>{person.burialPlace ?? "Unknown"}</dd>
+          </>
+        )
+      }
+    </dl>
+    {person.summary?.map((paragraph) => <p>{paragraph}</p>)}
+    {person.note && <p><em>{person.note}</em></p>}
+  </section>
+
+  {
+    hasExtra && (
+      <>
+        <hr />
+        <section id="more">
+          <slot />
+        </section>
+      </>
+    )
+  }
+
+  {
+    works.length > 0 && (
+      <>
+        <hr />
+        <section id="works">
+          <h2>Books</h2>
+          <p>
+            Books by {person.name}, from their covers. See all <a href="/texts/">Texts</a>.
+          </p>
+          <ul>
+            {works.map((work) => (
+              <li>
+                <a href={`/texts/${work.slug}/`}>{work.title}</a>
+                {work.kind && <> ({work.kind.toLowerCase()})</>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </>
+    )
+  }
+
+  {
+    person.sources && person.sources.length > 0 && (
+      <>
+        <hr />
+        <section id="sources">
+          <h2>Sources</h2>
+          <ul>
+            {person.sources.map((source) => (
+              <li>
+                <a href={source.href}>{source.label}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </>
+    )
+  }
+
+  <hr />
+  <section id="family">
+    <h2>Family</h2>
+    {
+      children.length > 0 && (
+        <>
+          <h3>Children</h3>
+          <ul>
+            {children.map((child) => (
+              <li>
+                {isNamed(child) ? (
+                  <a href={personPath(child)}>{child.name}</a>
+                ) : (
+                  <>Unknown (unconfirmed)</>
+                )}
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+    {
+      siblings.length > 0 && (
+        <>
+          <h3>Siblings</h3>
+          <ul>
+            {siblings.map((sibling) => (
+              <li>
+                {isNamed(sibling) ? (
+                  <a href={personPath(sibling)}>{sibling.name}</a>
+                ) : (
+                  <>Unknown (unconfirmed)</>
+                )}
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+    <p>See the <a href="/family-tree/">family tree</a>.</p>
+  </section>
+</PageLayout>
+
+<style>
+  dt {
+    font-weight: bold;
+    margin-block-start: 0.5em;
+  }
+
+  dd {
+    margin-inline-start: 0;
+  }
+
+  h3 {
+    margin-block: 1em 0.25em;
+  }
+</style>

@@ -1,0 +1,492 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import FamilyNode from "../components/FamilyNode.astro";
+import { familyTree } from "../data/family-tree";
+---
+
+<PageLayout title="Family tree" wide>
+  <p class="intro">
+    The Samkough lineage, starting from Amin Samkough’s grandfather. Tap a
+    card to see where that person was born and buried (underlined names link
+    to a page about them), and use the
+    <span class="intro-sign">+</span> / <span class="intro-sign">−</span>
+    buttons to collapse or expand a branch. “Unknown” means the information
+    hasn’t been found yet.
+  </p>
+  <div class="tree-wrap">
+    <div class="tree-controls">
+      <button type="button" data-action="expand">Expand all</button>
+      <button type="button" data-action="collapse">Collapse all</button>
+    </div>
+    <div class="tree-scroll" tabindex="0" role="region" aria-label="Family tree">
+      <ul class="tree">
+        <FamilyNode person={familyTree} />
+      </ul>
+    </div>
+  </div>
+</PageLayout>
+
+<script>
+  const wrap = document.querySelector<HTMLElement>(".tree-wrap");
+
+  if (wrap) {
+    const setCollapsed = (li: Element, collapsed: boolean) => {
+      li.toggleAttribute("data-collapsed", collapsed);
+      li.querySelector(":scope > .node > .toggle")?.setAttribute(
+        "aria-expanded",
+        String(!collapsed),
+      );
+    };
+
+    wrap.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+
+      const toggle = target.closest<HTMLElement>(".toggle");
+      if (toggle) {
+        const li = toggle.closest("li");
+        if (li) setCollapsed(li, !li.hasAttribute("data-collapsed"));
+        return;
+      }
+
+      const action = target.closest<HTMLElement>("[data-action]")?.dataset
+        .action;
+      if (action) {
+        const nodes = wrap.querySelectorAll(".tree li:has(> ul)");
+        nodes.forEach((li, i) => {
+          // "Collapse all" keeps the first node open so the tree isn't empty.
+          setCollapsed(li, action === "collapse" && i > 0);
+        });
+      }
+    });
+
+    // The buttons only make sense once the script is running.
+    wrap.setAttribute("data-ready", "");
+  }
+</script>
+
+<style is:global>
+  .intro {
+    max-width: 65ch;
+  }
+
+  .intro-sign {
+    display: inline-block;
+    min-width: 1.4em;
+    border: 1px solid #999;
+    border-radius: 999px;
+    text-align: center;
+    font-size: 0.85em;
+    line-height: 1.3;
+  }
+
+  .tree-wrap {
+    margin-block-start: 1.5em;
+    --line: #b9b9b9;
+    --indent: 1.1rem;
+    --tick: 1.35rem;
+    --card-width: 14rem;
+    --gap: 2.5rem;
+  }
+
+  /* collapse/expand controls need JS, so stay hidden until it runs */
+  .tree-wrap:not([data-ready]) .toggle,
+  .tree-wrap:not([data-ready]) .tree-controls {
+    display: none;
+  }
+
+  .tree-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-block-end: 0.75rem;
+  }
+
+  .tree-controls button {
+    min-height: 44px;
+    padding-inline: 1rem;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    background: #fff;
+    color: inherit;
+    font-size: 0.85em;
+    cursor: pointer;
+  }
+
+  .tree-controls button:hover {
+    background: #f2f2f2;
+  }
+
+  .tree-scroll {
+    overflow-x: auto;
+    padding-block: 0.25rem 1rem;
+  }
+
+  .tree-scroll:focus-visible {
+    outline: 2px solid var(--colors-flag-green);
+    outline-offset: 2px;
+  }
+
+  .tree,
+  .tree ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tree li[data-collapsed] > ul {
+    display: none;
+  }
+
+  /* ---------- the toggle button ---------- */
+
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    border: 1px solid #999;
+    border-radius: 999px;
+    background: #fff;
+    color: #333;
+    font-size: 0.8em;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .toggle:hover {
+    background: #eef5ec;
+    border-color: var(--colors-flag-green);
+  }
+
+  .toggle:focus-visible {
+    outline: 2px solid var(--colors-flag-green);
+    outline-offset: 2px;
+  }
+
+  .toggle .sign::before {
+    content: "\2212"; /* minus */
+    font-weight: 700;
+  }
+
+  .toggle .word::before {
+    content: "Hide";
+  }
+
+  .toggle[aria-expanded="false"] .sign::before {
+    content: "+";
+  }
+
+  .toggle[aria-expanded="false"] .word::before {
+    content: "Show";
+  }
+
+  /* the descendant count only matters once a branch is hidden */
+  .toggle .count {
+    display: none;
+  }
+
+  .toggle[aria-expanded="false"] .count {
+    display: inline;
+  }
+
+  /* ---------- cards (shared) ---------- */
+
+  /* a person and their spouse(s), stacked so it stays narrow */
+  .couple {
+    display: grid;
+  }
+
+  .couple .marriage {
+    margin: 0;
+    padding-block: 0.15rem;
+    padding-inline-start: 0.8rem;
+    font-size: 0.75em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  .couple .marriage::before {
+    content: "\26AD\00a0";
+  }
+
+  .person {
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+
+  .person[open] {
+    border-color: var(--colors-flag-green);
+    background: #fff;
+  }
+
+  .person summary {
+    display: grid;
+    gap: 0.1em;
+    padding: 0.6rem 2.2rem 0.6rem 0.8rem;
+    min-height: 44px;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+  }
+
+  .person summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* chevron: points down when closed, up when open */
+  .person summary::after {
+    content: "";
+    position: absolute;
+    inset-inline-end: 0.9rem;
+    top: 1.05rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-inline-end: 2px solid #666;
+    border-block-end: 2px solid #666;
+    transform: rotate(45deg);
+    transition: transform 0.15s;
+  }
+
+  .person[open] summary::after {
+    transform: rotate(-135deg);
+    top: 1.3rem;
+  }
+
+  .person summary:focus-visible {
+    outline: 2px solid var(--colors-flag-green);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  .person .name {
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .person .name.missing {
+    font-style: italic;
+    font-weight: 600;
+    color: #666;
+  }
+
+  .person .label {
+    font-size: 0.85em;
+    color: #666;
+    line-height: 1.3;
+  }
+
+  .person .dates {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1em;
+    font-size: 0.9em;
+    color: #333;
+  }
+
+  .person .key {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #666;
+  }
+
+  .person .more {
+    display: grid;
+    gap: 0.5em;
+    padding: 0.7rem 0.8rem 0.8rem;
+    border-top: 1px dashed #ccc;
+    font-size: 0.95em;
+  }
+
+  .person .more dl {
+    display: grid;
+    gap: 0.5em;
+  }
+
+  .person .more dt {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #666;
+  }
+
+  .person .more dd {
+    margin: 0;
+  }
+
+  .person .name a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--colors-flag-green);
+    text-underline-offset: 0.2em;
+  }
+
+  .person .links {
+    display: grid;
+    justify-items: start;
+    font-size: 0.9em;
+  }
+
+  .person .links a {
+    padding-block: 0.3em;
+  }
+
+  .person .note {
+    font-size: 0.9em;
+    color: #555;
+    font-style: italic;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .person summary::after {
+      transition: none;
+    }
+  }
+
+  /* ---------- tablet and smaller: vertical, indented outline ---------- */
+
+  @media (max-width: 1024px) {
+    .tree li {
+      position: relative;
+      padding-block-start: 0.5rem;
+    }
+
+    /* each generation steps in, joined to its parent by a vertical line */
+    .tree ul {
+      margin-inline-start: 0.75rem;
+      padding-inline-start: var(--indent);
+    }
+
+    /* vertical trunk + horizontal branch into each child */
+    .tree ul > li::before,
+    .tree ul > li::after {
+      content: "";
+      position: absolute;
+      background: var(--line);
+    }
+
+    .tree ul > li::before {
+      inset-inline-start: calc(var(--indent) * -1);
+      top: 0;
+      bottom: 0;
+      width: 2px;
+    }
+
+    .tree ul > li:last-child::before {
+      /* the last child's trunk stops at its own branch */
+      bottom: auto;
+      height: calc(0.5rem + var(--tick));
+    }
+
+    .tree ul > li::after {
+      inset-inline-start: calc(var(--indent) * -1);
+      top: calc(0.5rem + var(--tick));
+      width: var(--indent);
+      height: 2px;
+    }
+
+    /* pill under the card: "− Hide" / "+ Show 4" */
+    .toggle {
+      min-height: 44px;
+      margin-block-start: 0.25rem;
+      padding-inline: 0.9rem;
+    }
+  }
+
+  @media (min-width: 40em) and (max-width: 1024px) {
+    .tree-wrap {
+      --indent: 1.75rem;
+    }
+
+    .tree ul {
+      margin-inline-start: 1.25rem;
+    }
+  }
+
+  /* ---------- desktop: horizontal, grows left to right ---------- */
+
+  @media (min-width: 1025px) {
+    .tree li {
+      display: flex;
+      align-items: center;
+      padding-block: 0.3rem;
+    }
+
+    .tree ul {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .tree ul > li {
+      position: relative;
+      padding-inline-start: var(--gap);
+    }
+
+    .node {
+      position: relative;
+      flex: none;
+      width: var(--card-width);
+    }
+
+    /* line from the parent out to the trunk */
+    .tree ul::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: 0;
+      top: calc(50% - 1px);
+      width: calc(var(--gap) / 2);
+      height: 2px;
+      background: var(--line);
+    }
+
+    /* trunk joining the siblings, and a branch into each one */
+    .tree ul > li::before,
+    .tree ul > li::after {
+      content: "";
+      position: absolute;
+      background: var(--line);
+    }
+
+    .tree ul > li::before {
+      inset-inline-start: calc(var(--gap) / 2 - 1px);
+      top: 0;
+      bottom: 0;
+      width: 2px;
+    }
+
+    .tree ul > li:first-child::before {
+      top: 50%;
+    }
+
+    .tree ul > li:last-child::before {
+      bottom: 50%;
+    }
+
+    .tree ul > li::after {
+      inset-inline-start: calc(var(--gap) / 2);
+      top: calc(50% - 1px);
+      width: calc(var(--gap) / 2);
+      height: 2px;
+    }
+
+    /* the toggle sits on the junction between a parent and its children */
+    .toggle {
+      position: absolute;
+      inset-inline-start: calc(100% + var(--gap) / 2);
+      top: 50%;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      min-width: 1.6rem;
+      height: 1.6rem;
+      justify-content: center;
+      padding-inline: 0.3rem;
+      gap: 0.1em;
+    }
+
+    .toggle .word {
+      display: none;
+    }
+  }
+</style>

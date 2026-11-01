@@ -1,0 +1,60 @@
+---
+import type { Person } from "../data/family-tree";
+import FamilyNode from "./FamilyNode.astro";
+import PersonCard from "./PersonCard.astro";
+
+interface Props {
+  person: Person;
+  /** Unique id for this node, built from its position in the tree. */
+  id?: string;
+}
+
+const { person, id = "n0" } = Astro.props;
+const spouses = person.spouses ?? [];
+const children = person.children ?? [];
+
+const countDescendants = (p: Person): number =>
+  (p.children ?? []).reduce((sum, c) => sum + 1 + countDescendants(c), 0);
+const descendants = countDescendants(person);
+const branchId = `branch-${id}`;
+---
+
+<li>
+  <div class="node">
+    <div class="couple">
+      <PersonCard person={person} />
+      {
+        spouses.map((spouse) => (
+          <>
+            <p class="marriage">Married</p>
+            <PersonCard person={spouse} label={`Spouse of ${person.name}`} />
+          </>
+        ))
+      }
+    </div>
+    {
+      children.length > 0 && (
+        <button
+          type="button"
+          class="toggle"
+          aria-expanded="true"
+          aria-controls={branchId}
+          aria-label={`Descendants of ${person.name} (${descendants})`}
+        >
+          <span class="sign" aria-hidden="true" />
+          <span class="word" aria-hidden="true" />
+          <span class="count" aria-hidden="true">{descendants}</span>
+        </button>
+      )
+    }
+  </div>
+  {
+    children.length > 0 && (
+      <ul id={branchId}>
+        {children.map((child, i) => (
+          <FamilyNode person={child} id={`${id}-${i}`} />
+        ))}
+      </ul>
+    )
+  }
+</li>

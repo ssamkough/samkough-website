@@ -1,0 +1,61 @@
+---
+import type { Person } from "../data/family-tree";
+
+interface Props {
+  person: Person;
+  /** Overrides person.label, e.g. "Spouse of Amin Samkough". */
+  label?: string;
+}
+
+const { person } = Astro.props;
+const label = Astro.props.label ?? person.label;
+const unknown = (value?: string) => value ?? "Unknown";
+const isUnknownName = person.name === "Unknown";
+const died = person.living ? "Living" : unknown(person.died);
+---
+
+<details class="person">
+  <summary>
+    <span class="name" class:list={{ missing: isUnknownName }}>
+      {person.href ? <a href={person.href}>{person.name}</a> : person.name}
+    </span>
+    {label && <span class="label">{label}</span>}
+    <span class="dates">
+      <span class="date"><span class="key">Born</span> {unknown(person.born)}</span>
+      <span class="date"><span class="key">Died</span> {died}</span>
+    </span>
+  </summary>
+  <div class="more">
+    <dl>
+      <div>
+        <dt>Born in</dt>
+        <dd>{unknown(person.birthplace)}</dd>
+      </div>
+      {
+        person.deathplace && (
+          <div>
+            <dt>Died in</dt>
+            <dd>{person.deathplace}</dd>
+          </div>
+        )
+      }
+      <div>
+        <dt>Buried in</dt>
+        <dd>{person.living ? "Living" : unknown(person.burialPlace)}</dd>
+      </div>
+    </dl>
+    {person.note && <p class="note">{person.note}</p>}
+    {
+      (person.href || person.sources?.length) && (
+        <div class="links">
+          {person.href && (
+            <a href={person.href}>{`Page for ${person.name}`}</a>
+          )}
+          {person.sources?.map((source) => (
+            <a href={source.href}>{source.label}</a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</details>

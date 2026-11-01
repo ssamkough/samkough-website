@@ -3,13 +3,34 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <p>A website dedicated to preserving information on the Samkough family.</p>
-  <p>List of people with more information:</p>
+  <header>
+    <nav>
+      <a href="/more-info/">About</a>
+    </nav>
+  </header>
+  <p>
+    <em
+      >A website dedicated to preserving information on the Samkough family.</em
+    >
+  </p>
+  <p>
+    <a href="/migration/">Migration information</a>: how many Circassians in Syria
+    came by way of the Balkans, with sources.
+  </p>
+  <p>Notable people:</p>
   <ul>
     <li><a href="people/amin-samkough">Amin Samkough</a></li>
   </ul>
-  <p>
-    <a href="/more-info/">More info</a> about this site and how the
-    translations are made.
-  </p>
 </Layout>
+
+<style>
+  header {
+    border-bottom: 1px solid #ccc;
+    margin-block-end: 1em;
+    padding-block-end: 1em;
+  }
+
+  nav {
+    text-align: right;
+  }
+</style>

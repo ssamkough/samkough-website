@@ -1,0 +1,982 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import Cite from "../components/Cite.astro";
+
+const research = "/people/amin-samkough/research";
+---
+
+<PageLayout title="Circassians in Syria and the Balkan route">
+  <p>
+    <a href="/people/amin-samkough/">Amin Samkough</a> &middot;
+    <a href={`${research}/`}>Research</a>
+  </p>
+  <hr />
+
+  <aside class="key">
+    <p>
+      <mark>
+        <strong>Key point:</strong> many of the Circassians in Syria did not
+        come straight from the Caucasus. They were first settled in the Ottoman
+        Balkans in the 1860s and moved to Syria after 1877&ndash;78
+        <Cite src="kazzaz" at="pp. 1, 9" />
+        <Cite src="orsam" at="p. 9" />
+        <Cite src="chochiev" at="p. 203" />. This matches what the biographies
+        on this site say about <strong>Amin Samkough’s grandfather</strong>:
+        that he moved “first to the Balkans and then to Syria” in the great
+        Circassian exile, which the text dates to 1864
+        <Cite page="circassian-center-emin-semsug" label="Circassian Center" />.
+        <a href="#family">See how the two fit together</a>.
+      </mark>
+    </p>
+  </aside>
+
+  <nav id="contents" aria-label="Contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#details">About this page</a></li>
+      <li><a href="#route">The route in short</a></li>
+      <li><a href="#step-1">From Circassia to the Ottoman Balkans (1860s)</a></li>
+      <li><a href="#step-2">Renewed displacement after 1877&ndash;78</a></li>
+      <li><a href="#step-3">To the Syrian ports (1878)</a></li>
+      <li>
+        <a href="#step-4">Into the Hauran, Quneitra and the Golan</a>
+        <ul>
+          <li><a href="#before-1878">Settlement before 1878</a></li>
+          <li><a href="#mansura">Mansura</a></li>
+        </ul>
+      </li>
+      <li><a href="#family">Amin Samkough’s grandfather and the Balkan route</a></li>
+      <li><a href="#numbers">How many came?</a></li>
+      <li><a href="#sources">Sources</a></li>
+      <li>
+        <a href="#maps">Maps from the sources</a>
+        <ul>
+          <li><a href="#map-kazzaz">Kazzaz, Figure 3.1</a></li>
+          <li><a href="#map-schumacher">Schumacher’s map of the Jaulân</a></li>
+          <li><a href="#map-lash-syria">Lash, settlements in Syria, 1878&ndash;1967</a></li>
+          <li><a href="#map-lash-anatolia">Lash, villages in Anatolia</a></li>
+        </ul>
+      </li>
+    </ol>
+  </nav>
+  <hr />
+
+  <section id="details">
+    <h2>About this page</h2>
+    <p>
+      This page sets out the route by which many Circassians reached Syria:
+      from the Caucasus, through the Ottoman Balkans, to the Golan Heights. It
+      uses six published studies of how Circassian refugees were settled in
+      Ottoman Syria. It then sets the grandfather’s account from the
+      biographies already on this site beside that route.
+    </p>
+    <p>
+      <strong>How claims are backed.</strong> Every claim of fact is followed by
+      a citation in square brackets: the study and the page it comes from, which
+      links to the full entry under <a href="#sources">Sources</a>, or a research
+      page on this site. A claim with no citation is my own comment, and I say
+      so. Page numbers are the ones printed in each work.
+    </p>
+    <dl>
+      <dt>Compiled</dt>
+      <dd><time datetime="2026-11-01">1 November 2026</time></dd>
+      <dt>Sources</dt>
+      <dd>Six studies, listed with their dates in <a href="#sources">Sources</a></dd>
+      <dt>Languages</dt>
+      <dd>
+        English, Russian and Arabic. The Russian and Arabic passages are my own
+        translations, made with an AI assistant. See
+        <a href="/more-info/">More info</a>.
+      </dd>
+    </dl>
+    <p>
+      <mark>
+        Review: <strong>none of the six studies names Amin Samkough’s family.</strong>
+        I searched the text of each one for the name in its English, Russian,
+        Turkish and Arabic spellings and found nothing. (The 2017 article by
+        Akbulat does name “Amin Samgug”, but only in a later passage about his
+        appeals to the League of Nations, not about migration
+        <Cite src="akbulat" at="p. 9" />.) So this page documents
+        the <em>general</em> history of the route, which the studies agree on,
+        and sets the grandfather’s account beside it. It does not prove that his
+        family took this route.
+      </mark>
+    </p>
+  </section>
+  <hr />
+
+  <section id="route">
+    <h2>The route in short</h2>
+    <ol>
+      <li>
+        <strong>Circassia</strong>, the north-west Caucasus. Russian conquest
+        drove out a million or more people, with the peak in 1864
+        <Cite src="kazzaz" at="p. 8" />
+        <Cite src="akbulat" at="p. 5" />.
+      </li>
+      <li>
+        <strong>The Ottoman Balkans, 1860s.</strong> The Ottoman state settled
+        many of them in the Balkans (now Bulgaria, Serbia, Bosnia, Romania,
+        Greece and Kosovo), then called Rumelia
+        <Cite src="akbulat" at="p. 6" />
+        <Cite src="chochiev" at="p. 202" />.
+      </li>
+      <li>
+        <strong>Renewed displacement, 1877&ndash;78.</strong> After the
+        Russo-Ottoman war the Ottomans had to move the Circassians out of the
+        Balkans <Cite src="chochiev" at="p. 203" />
+        <Cite src="akbulat" at="p. 6" />.
+      </li>
+      <li>
+        <strong>The Syrian ports, 1878.</strong> Ships landed tens of thousands
+        at Beirut, Acre, Haifa, Latakia and other ports
+        <Cite src="chochiev" at="p. 203" />
+        <Cite src="orsam" at="p. 10" />. Others came overland
+        <Cite src="lash" at="web page" />.
+      </li>
+      <li>
+        <strong>The Hauran, Quneitra and the Golan.</strong> Part of the
+        Balkan Circassians were sent to the Golan, in the Hauran sanjak
+        <Cite src="mirzoeva" at="web text" />
+        <Cite src="orsam" at="p. 10" />. The Golan became the largest
+        Circassian area in Syria, and Mansura was one of its villages
+        <Cite src="lash" at="web page" />.
+      </li>
+    </ol>
+  </section>
+  <hr />
+
+  <section id="step-1">
+    <h2>1. From Circassia to the Ottoman Balkans (1860s)</h2>
+    <p>
+      The studies agree that this was a first exile. The Sabancı thesis opens
+      by saying that the 1878 move was a second one for these people:
+    </p>
+    <blockquote lang="en">
+      “For Circassians, this was a re-experience of what happened nearly twenty
+      years earlier. They were exiled from Russia, and they settled in Rumelia
+      by Ottoman authorities.” <Cite src="kazzaz" at="p. 1" />
+    </blockquote>
+    <p>
+      Akbulat dates the first wave of migration from the Caucasus to 1859, with
+      the peak after 1862 <Cite src="akbulat" at="p. 5" />. He says the
+      Ottomans settled most of them in Western Thrace, Western Anatolia and the
+      Balkans, and gives more than 300,000 as settling in the European parts of
+      the empire <Cite src="akbulat" at="p. 6" />. Kazzaz puts the peak of
+      migration to the Ottoman Empire in 1864 <Cite src="kazzaz" at="p. 8" />,
+      and Akbulat names 21 May 1864 as the day Russia ended the “Caucasian
+      wars” <Cite src="akbulat" at="p. 5" />. Chochiev says that in the 1860s
+      the main flow went to the Balkans and Anatolia, and that about
+      175,000&ndash;200,000 Circassians had been settled in the Balkans by the
+      time of the war of 1877 <Cite src="chochiev" at="pp. 202&ndash;203" />.
+    </p>
+    <p>
+      <mark>
+        Review: in his introduction Akbulat says Syrian Circassians “in the 17th
+        century” were first settled in the Balkans
+        <Cite src="akbulat" at="p. 3" />. The rest of his text, and every other
+        source here, puts this in the 1860s. I take “17th century” to be a slip
+        for the 19th (this is my reading), but I could not check it against any
+        other copy.
+      </mark>
+    </p>
+  </section>
+  <hr />
+
+  <section id="step-2">
+    <h2>2. Renewed displacement after 1877&ndash;78</h2>
+    <p>
+      The war of 1877&ndash;78 ended in an Ottoman defeat. Chochiev writes that
+      at the peace talks in San Stefano and Berlin the Ottomans had to agree to
+      Russia’s demand to remove the Circassians settled in the Balkans in the
+      1860s, who were blamed for violence against the local Christian
+      population <Cite src="chochiev" at="p. 203" />. Akbulat likewise says the
+      Berlin agreement led to the eviction of the Circassians from the Balkans
+      <Cite src="akbulat" at="p. 6" />. Mirzoeva and Apazheva add that the
+      Sultan issued a decree on 18 April 1879 forbidding Circassians to return
+      to the European part of the empire <Cite src="mirzoeva" at="web text" />.
+    </p>
+    <p>
+      Before 1878 only small groups had been sent to Syria. Kazzaz says the
+      first settlements there date from the 1870s, and that a “dramatic
+      increase” came from 1878 <Cite src="kazzaz" at="p. 9" />. ORSAM says the
+      real migration wave to Syria began after the war of 1877&ndash;78, mainly
+      from the Balkan territories <Cite src="orsam" at="p. 9" />.
+    </p>
+  </section>
+  <hr />
+
+  <section id="step-3">
+    <h2>3. To the Syrian ports (1878)</h2>
+    <p>
+      Chochiev, citing Ottoman and French sources, gives the timing and the
+      ports:
+    </p>
+    <blockquote lang="en">
+      From mid-February to mid-April 1878, about 25,000 Circassians were
+      brought on Ottoman and foreign ships to Beirut, Haifa, Acre, Jaffa,
+      Latakia, Iskenderun and other ports of Syria, Lebanon and Palestine.
+      <Cite src="chochiev" at="p. 203" />
+      <br />(My translation from the Russian.)
+    </blockquote>
+    <p>
+      The Arabic site <em>Syrian Contemporary History</em> puts it more
+      broadly:
+    </p>
+    <blockquote lang="en">
+      In 1878, tens of thousands of displaced Circassians poured into Greater
+      Syria, coming from the Balkans (by sea and by land) and from the
+      Anatolian peninsula (by land).
+      <Cite src="lash" at="opening paragraph" />
+      <br />(My translation from the Arabic.)
+    </blockquote>
+    <p>
+      Akbulat and Kazzaz both print a total of <strong>26,182</strong>
+      Circassians arriving at ports in the Levant between February and
+      September 1878, from a book by Berzeg
+      <Cite src="akbulat" at="p. 7, Table 1" />
+      <Cite src="kazzaz" at="p. 13" />. Akbulat calls the exact figure hard to
+      determine and says most of the migrants died during and after settlement
+      <Cite src="akbulat" at="p. 7" />. ORSAM says thousands died of
+      starvation and disease after landing <Cite src="orsam" at="p. 10" />.
+    </p>
+    <p>
+      <mark>
+        Review: <strong>the 26,182 figure.</strong> The ten rows of Akbulat’s
+        table (Beirut, Acre, Tripoli, Latakia twice, Hama/Homs, Tripoli again,
+        Haifa, Acre again and Beirut again) add up to 27,382, not 26,182
+        <Cite src="akbulat" at="p. 7, Table 1" />. The
+        two differ by exactly one 1,200-person row. The table also lists
+        Latakia twice with the same 2,500, and lists Hama/Homs, which is
+        inland, as a port. Kazzaz dates the 10,000 sent to Hama to July
+        <Cite src="kazzaz" at="p. 13" />, while
+        Akbulat’s table dates it to 4 March. I have not seen Berzeg’s book, so
+        I cannot tell which is right. Treat 26,182 as “about 25,000 to 27,000”
+        (my reading).
+      </mark>
+    </p>
+    <p>
+      Kazzaz also describes the arrival itself. A group meant for Acre was left
+      on the coast for four days, forced open a locked mosque, and a fight
+      followed. After about twenty years in Rumelia, he writes, they “endured
+      similar traumas” in Syria <Cite src="kazzaz" at="pp. 12&ndash;13" />.
+    </p>
+  </section>
+  <hr />
+
+  <section id="step-4">
+    <h2>4. Into the Hauran, Quneitra and the Golan</h2>
+    <p>
+      From the ports the refugees were sent inland. The Ottoman plan of July
+      1878, as Chochiev reports it, was to send 25,000 of those moved from the
+      Balkans to the Damascus province and 50,000 to the Aleppo province. That
+      was a plan, not a count of who arrived
+      <Cite src="chochiev" at="p. 203" />. (Kazzaz dates a similar plan, for
+      25,000 to Damascus, to August 1878 <Cite src="kazzaz" at="p. 13" />.)
+    </p>
+    <p>
+      Three of the studies say that Balkan Circassians went to the Golan in
+      particular:
+    </p>
+    <blockquote lang="ru">
+      Другую часть черкесов, переселенных с балканских земель, направили на
+      Голанские высоты, в санджак Хауран.
+      <br />
+      “Another part of the Circassians resettled from the Balkan lands were sent
+      to the Golan Heights, to the sanjak of Hauran.”
+      <Cite src="mirzoeva" at="web text" /> (my translation)
+    </blockquote>
+    <blockquote lang="en">
+      “… another group coming from Balkans were settled in the Golan Heights in
+      the Sanjak of Hauran.” <Cite src="orsam" at="p. 10" />
+    </blockquote>
+    <p>
+      The third is Kazzaz, who says that after the tragic losses a group of
+      Circassians “dispatched to the semi-arid lands of Hawran”, and that the
+      district of Quneitra was “a principal area” of their settlement
+      <Cite src="kazzaz" at="p. 1" />.
+    </p>
+    <p>
+      ORSAM adds that the Circassians were “mainly settled in the Golan Heights
+      as a military line”, set between the Druze areas and the Bedouin tribes
+      <Cite src="orsam" at="pp. 10&ndash;11" />. Chochiev gives the same
+      reason: the Quneitra colonies were founded to offset Druze opposition to
+      the government <Cite src="chochiev" at="p. 203" />. Kazzaz says that
+      Circassians “built or expanded the population” of Quneitra,
+      <strong>Mansura</strong>, Ayn Zivan, Mumsiya, Cuveyza, Breyka, Bir Acam
+      and Surman <Cite src="kazzaz" at="p. 31" />.
+    </p>
+    <p>
+      The Arabic article by Lash lists the Golan villages in the same way, with
+      Mansura first among the named villages, and calls the Golan the largest
+      Circassian concentration in Syria <Cite src="lash" at="web page" />:
+    </p>
+    <blockquote lang="ar" dir="rtl">
+      …القنيطرة، وقرى: المنصورة، وعين زيوان، والمومسية، والجويزة …
+    </blockquote>
+    <p>
+      That is, “… Quneitra, and the villages of: al-Mansura, Ayn Zivan,
+      al-Mumsiya, al-Juwayza …” (my translation of an extract).
+    </p>
+
+    <h3 id="before-1878">Settlement before 1878</h3>
+    <p>
+      Some Circassians reached the Golan earlier, so the Balkan route was not the
+      only one. Counts differ: about 400 in Quneitra in the early 1870s
+      <Cite src="kazzaz" at="p. 31" />, 400 each near Homs, in the Hauran and on
+      the Golan <Cite src="mirzoeva" at="web text" />, about 1,000 across Hama,
+      Homs and the Golan in 1872
+      <Cite src="orsam" at="pp. 8&ndash;9" />
+      <Cite src="kazzaz" at="p. 9" />, and about 1,500 in two colonies near Homs
+      and Quneitra <Cite src="chochiev" at="p. 202" />. ORSAM adds an oral
+      account from elders of a different route for these early groups: by ship
+      to Samsun, then to Uzunyayla in central Turkey, then to Syria
+      <Cite src="orsam" at="p. 9" />.
+    </p>
+
+    <h3 id="mansura">Mansura</h3>
+    <p>
+      Kazzaz gives these household counts for Mansura
+      <Cite src="kazzaz" at="p. 36, Table 3.1" />. The 1885 figure is from the
+      Ottoman provincial yearbook, and the 1935 figure from ORSAM’s table of the
+      French mandate census, which has the same number
+      <Cite src="orsam" at="p. 15" />.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Year</th><th>Households</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1885</td><td>184</td><td>Ottoman provincial yearbook (<i>Salname-i Vilayet-i Suriye</i> 1302/1885, p. 234), via <Cite src="kazzaz" at="p. 36" /></td></tr>
+        <tr><td>1935</td><td>120</td><td>French mandate census, in <Cite src="orsam" at="p. 15" /> and <Cite src="kazzaz" at="p. 36" /></td></tr>
+      </tbody>
+    </table>
+    <p>
+      Kazzaz also gives the population of Mansura as 400, among the leading
+      Circassian villages of the district <Cite src="kazzaz" at="p. 35" />, and
+      records events there. In January 1895 Muslim inhabitants of the Shuf (in
+      Lebanon) petitioned that its governor had incited the Druze of Majdal
+      Shams to burn Circassian houses in Mansura
+      <Cite src="kazzaz" at="p. 59" />, and in December 1895 the Circassians of
+      Mansura beat back a Druze attack <Cite src="kazzaz" at="p. 60" />. In
+      1903 the chief of the Circassians of Mansura, Mehmed Rashid, petitioned
+      the government that the Fadl tribe had taken their fields, and that 64
+      Circassians had been killed
+      <Cite src="kazzaz" at="p. 64, note 238" />.
+    </p>
+    <p>
+      <mark>
+        Review: that 1903 petition says the Circassians had held their fields
+        for “twenty-seven years”, which points to about 1876, before the 1878
+        wave <Cite src="kazzaz" at="p. 64, note 238" />. It is one party’s claim
+        in a dispute, so it may be rounded or exaggerated. But it could mean
+        some Mansura families came earlier than the main wave. I have not seen
+        it explained in any of the six studies (my reading).
+      </mark>
+    </p>
+  </section>
+  <hr />
+
+  <section id="family">
+    <h2>Amin Samkough’s grandfather and the Balkan route</h2>
+    <p>
+      The grandfather’s account comes from one Turkish biography of Amin
+      Samkough. The same text appears on three sites:
+      <a href={`${research}/bilgiler-emin-semsug/`}>Bilgiler</a>
+      (<time datetime="2009-12-08">8 December 2009</time>),
+      <a href={`${research}/circassian-center-emin-semsug/`}>Circassian Center</a>
+      (2019) and
+      <a href={`${research}/biyografi-net-emin-semsug/`}>Biyografi.Net</a>
+      (undated, archived by 2025)
+      <Cite page="bilgiler-emin-semsug" label="Bilgiler" at="same-text section" />.
+      The shortened version on
+      <a href={`${research}/yeni-akit-emin-semsug/`}>Yeni Akit</a>
+      (27 October 2016) leaves the grandfather and father out
+      <Cite page="yeni-akit-emin-semsug" label="Yeni Akit" at="review notes" />.
+      Because the three copies share one text, they count as <strong>one
+      source</strong>, not three.
+    </p>
+    <p>The sentence in the original, with my translation:</p>
+    <blockquote lang="tr">
+      Büyük Çerkes sürgününde (1864) önce Balkanlar’a, sonra da Suriye’ye göç
+      etmek zorunda kalan dedesi, Mansure köyünün ileri gelenlerinden biri ve
+      köy muhtarıydı. Babası Semguğ Eyüp de Trablusgarb’ı (Libya) İtalyan
+      saldırısına karşı savunan Osmanlı güçlerine katılarak orada savaşmıştı
+      (1911).
+      <br />
+      “His grandfather, who had to emigrate first to the Balkans and then to
+      Syria during the Great Circassian exile (1864), was one of the notables
+      of the village of Mansure and its headman (<span lang="tr">muhtar</span>).
+      His father, Eyüp Semguğ, had also fought there, joining the Ottoman forces
+      defending Tripolitania (Libya) against the Italian attack (1911).”
+      <Cite page="circassian-center-emin-semsug" label="Circassian Center" />
+      <a href="https://www.bilgiler.gen.tr/emin-semsug.html">original on Bilgiler</a>
+    </blockquote>
+    <p>
+      The claims in it, one by one, set against the documented record:
+    </p>
+    <ul class="claims">
+      <li>
+        <strong>Claim 1. The grandfather moved first to the Balkans, then to
+        Syria, in the exile of 1864.</strong>
+        <ul>
+          <li>
+            <em>What the biography says:</em> the sentence above. Note that the
+            year “(1864)” is attached to the “Great Circassian exile”, not
+            clearly to the grandfather’s own departure
+            <Cite page="circassian-center-emin-semsug" label="Circassian Center" />.
+          </li>
+          <li>
+            <em>What the studies say:</em> 1864 is the year Russia ended the
+            Caucasian wars <Cite src="akbulat" at="p. 5" /> and the peak year of
+            migration to the Ottoman Empire <Cite src="kazzaz" at="p. 8" />.
+            Many Circassians were settled in the Balkans in the 1860s
+            <Cite src="chochiev" at="pp. 202&ndash;203" />
+            <Cite src="kazzaz" at="p. 1" />, and the main move to Syria came
+            after 1878 <Cite src="kazzaz" at="p. 9" />
+            <Cite src="orsam" at="p. 9" />. So the order “Balkans, then Syria”
+            matches the documented route.
+          </li>
+          <li>
+            <em>Other routes also existed:</em> small groups reached the Golan
+            in the early 1870s <Cite src="kazzaz" at="p. 9" />, ORSAM’s elders
+            describe a route through Samsun and Uzunyayla
+            <Cite src="orsam" at="p. 9" />, and later groups came from Anatolia
+            <Cite src="kazzaz" at="p. 31" />. A Balkan route is therefore
+            consistent with the record, but is not the only one.
+          </li>
+          <li>
+            <mark>
+              Review: the biographies give no source, and do not name the
+              grandfather. Since 1864 is the usual date of “the exile”, it may
+              stand for the exile in general, not for a year this family moved
+              (my reading).
+            </mark>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Claim 2. The grandfather was a notable and the headman
+        (muhtar) of the village of Mansure.</strong>
+        <ul>
+          <li>
+            <em>What the biography says:</em> the sentence above, with no
+            source <Cite page="circassian-center-emin-semsug" label="Circassian Center" />.
+          </li>
+          <li>
+            <em>What the studies say:</em> nothing about him. The one named
+            leader of Mansura’s Circassians that Kazzaz records is Mehmed
+            Rashid, in a petition of 9 March 1903
+            <Cite src="kazzaz" at="p. 64, note 238" />. That is long after the
+            1870s and 1880s, and the thesis says nothing about earlier headmen.
+          </li>
+          <li>
+            <mark>
+              Review: unsourced. Nothing in the six studies confirms or
+              contradicts it.
+            </mark>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Claim 3. Amin Samkough was born in Mansure (Mansura) in the
+        Golan.</strong>
+        <ul>
+          <li>
+            <em>Who says so:</em>
+            the Turkish biography above (1900)
+            <Cite page="circassian-center-emin-semsug" label="Circassian Center" />;
+            eSyria (1900, al-Mansura)
+            <Cite page="esyria-first-mayor-of-quneitra" label="eSyria" />;
+            Arabic Wikipedia (1903, al-Mansura)
+            <Cite page="arabic-wikipedia-amin-ayyub-samkoug" label="Arabic Wikipedia" />;
+            and the Circassia Times blog post (1903, al-Mansura)
+            <Cite page="circassia-times-amin-ayyub-samkoug" label="Circassia Times" />.
+            The Russian dictionary entry gives “1900, Quneitra”, which names
+            the district, not the village
+            <Cite page="north-caucasians-in-emigration" label="dictionary entry" />.
+            Mansura lay in the Quneitra district
+            <Cite src="kazzaz" at="p. 35" />, so the two are not in conflict.
+          </li>
+          <li>
+            <em>Do the places fit?</em> Mansura was a Circassian village in the
+            Quneitra district, with 184 households in 1885
+            <Cite src="kazzaz" at="pp. 31, 36" />, and Lash lists it among the
+            Golan villages <Cite src="lash" at="web page" />. So the place is
+            consistent with the history.
+          </li>
+          <li>
+            <em>The year is disputed.</em> 1900 appears in the Turkish
+            biography, eSyria and the dictionary entry. 1903 appears in Arabic
+            Wikipedia and Circassia Times, and in the caption of a portrait on
+            this site’s <a href="/people/amin-samkough/images/">images page</a>.
+            The biography page on this site gives 1900&ndash;1953
+            <Cite page="/people/amin-samkough/biography/" label="biography page" />.
+            The Arabic Wikipedia entry cites the eSyria article, which says
+            1900
+            <Cite page="arabic-wikipedia-amin-ayyub-samkoug" label="Arabic Wikipedia" at="note 1" />,
+            and the Circassia Times post says 1903 for what its own page notes
+            is the same eSyria text
+            <Cite page="circassia-times-amin-ayyub-samkoug" label="Circassia Times" at="review notes" />.
+          </li>
+          <li>
+            <mark>
+              Review: the birthplace is consistent with the history, but the
+              pages repeat one another. The Turkish pages share one text, and
+              the Arabic pages draw on the eSyria article, so they are not
+              independent confirmations. The birth year is still open.
+            </mark>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Claim 4. His father, Eyüp (Ayyub), fought in Libya in 1911,
+        and died in Tripoli.</strong>
+        <ul>
+          <li>
+            <em>Who says so:</em> the Turkish biography says only that the
+            father fought there (1911)
+            <Cite page="circassian-center-emin-semsug" label="Circassian Center" />.
+            eSyria says he died in Tripoli, Libya, defending it against the
+            Italians, which is why his son had a free Ottoman scholarship
+            <Cite page="esyria-first-mayor-of-quneitra" label="eSyria" />.
+            Arabic Wikipedia and Circassia Times say he was killed in Tripoli in
+            1911
+            <Cite page="arabic-wikipedia-amin-ayyub-samkoug" label="Arabic Wikipedia" />
+            <Cite page="circassia-times-amin-ayyub-samkoug" label="Circassia Times" />.
+          </li>
+          <li>
+            <em>What the studies say:</em> none of the six mentions Libya. It
+            falls outside the migration they cover.
+          </li>
+          <li>
+            <mark>
+              Review: unsourced, and the sources differ on whether he fought
+              or died there. Not tested against any study.
+            </mark>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      In short, the grandfather’s account is <strong>consistent with</strong>
+      the documented route, but the documents used here do not mention him or
+      his family. The place that links the two is Mansura.
+    </p>
+    <p>
+      <mark>
+        My suggestion, not from a source: to go further, a researcher would need
+        records that list the family by name. Kazzaz draws on Ottoman provincial
+        yearbooks and Ottoman archive files (for example, 1885 household counts
+        per village
+        <Cite src="kazzaz" at="p. 36" />), and ORSAM reproduces the French
+        census of 1935 (also counted per village
+        <Cite src="orsam" at="p. 15" />). Whether those or the Ottoman
+        population registers name individual families is something I have not
+        checked.
+      </mark>
+    </p>
+  </section>
+  <hr />
+
+  <section id="numbers">
+    <h2>How many came? The sources disagree</h2>
+    <table>
+      <thead>
+        <tr><th>Figure</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>About 25,000 at the ports, mid-Feb to mid-Apr 1878</td>
+          <td><Cite src="chochiev" at="p. 203" /></td>
+        </tr>
+        <tr>
+          <td>26,182 at the ports, Feb to Sep 1878 (but see the review note)</td>
+          <td>
+            <Cite src="akbulat" at="p. 7" />,
+            <Cite src="kazzaz" at="p. 13" />, both from Berzeg
+          </td>
+        </tr>
+        <tr>
+          <td>45,000 at the ports by September 1878</td>
+          <td><Cite src="orsam" at="p. 10" /></td>
+        </tr>
+        <tr>
+          <td>45,000 in Syria, Lebanon and “Libya” by the end of 1878</td>
+          <td><Cite src="mirzoeva" at="web text" /></td>
+        </tr>
+        <tr>
+          <td>40,000&ndash;50,000 settled in Syria, 1878&ndash;80</td>
+          <td><Cite src="orsam" at="p. 15" />, from Russian consulates</td>
+        </tr>
+        <tr>
+          <td>About 70,000 settled in Syria, 1878&ndash;80</td>
+          <td><Cite src="orsam" at="p. 15" />, giving İzzet Aydemir’s estimate</td>
+        </tr>
+        <tr>
+          <td>50,000&ndash;60,000 in the province of Syria in total</td>
+          <td><Cite src="kazzaz" at="p. 13" />, from Berzeg</td>
+        </tr>
+        <tr>
+          <td>No more than 35,000&ndash;40,000 in Syria in the Ottoman period</td>
+          <td><Cite src="lash" at="closing paragraph" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      The gap is wide because, as ORSAM says, the authorities did not record
+      accurate numbers in 1878&ndash;80, and many people died
+      <Cite src="orsam" at="p. 15" />.
+      <mark>
+        Review: Akbulat gives 70,000 as the total “together with those who
+        arrived before 1878” and cites ORSAM <Cite src="akbulat" at="p. 7" />.
+        The ORSAM report I read gives 70,000 only as Aydemir’s figure for
+        1878&ndash;80 alone <Cite src="orsam" at="p. 15" />. The two are not the
+        same claim.
+      </mark>
+    </p>
+  </section>
+  <hr />
+
+  <section id="sources">
+    <h2>Sources</h2>
+    <p>
+      Dates are those printed on the work, or its year of publication. I have
+      read the sections cited above, not every page of each work. Page numbers
+      are as printed in each work. For the Akbulat article they are the PDF’s
+      own page numbers. The ORSAM report’s text comes out of the PDF in a
+      scrambled order, so allow a page either way for its page numbers.
+      Mirzoeva and Apazheva and Lash are web texts with no page numbers.
+    </p>
+    <ol>
+      <li id="src-kazzaz">
+        <strong>Gizem Kazzaz</strong>, <em>A Glimpse into the World of Muhajirs:
+        Circassians in Ottoman Syria (1864&ndash;1910)</em>. MA thesis, Sabancı
+        University (supervisor: Selçuk Akşin Somel). Approved
+        <time datetime="2021-07-08">8 July 2021</time>. English. Quneitra and
+        Mansura are covered in chapter 3 (pp. 24&ndash;37).
+        <a href="https://research.sabanciuniv.edu/id/eprint/42456/1/10337089.pdf">PDF</a>
+      </li>
+      <li id="src-akbulat">
+        <strong>Emir Fatih Akbulat</strong>, “Syrian Circassians in the context
+        of the Syrian refugees’ issue”. <em>Central European Journal of
+        Politics</em> 3 (1): 1&ndash;25, 2017. English. The PDF was uploaded in
+        November 2017, according to its web address.
+        <a href="https://www.cejop.cz/wp-content/uploads/2017/11/2017_Vol-03_No-01_Art-01_Akbulat-FINAL.pdf">PDF</a>
+      </li>
+      <li id="src-chochiev">
+        <strong>Georgy V. Chochiev</strong> (Чочиев Г. В.), “Circassian
+        colonization in Ottoman Syria in the second half of the 19th &ndash;
+        early 20th century” (<span lang="ru">Черкесская колонизация в
+        османской Сирии…</span>). <em>Historical, Philosophical, Political and
+        Legal Sciences, Culturology and Art Studies</em>, Tambov: Gramota, 2015,
+        No. 11 (61), part 3, pp. 202&ndash;205. Russian. I read the
+        five-page PDF.
+        <a href="https://www.gramota.net/article/hss20152655/pdf">PDF</a>
+      </li>
+      <li id="src-mirzoeva">
+        <strong>S. G. Mirzoeva and E. Kh. Apazheva</strong> (Мирзоева С. Г.,
+        Апажева Е. Х.), “Resettlement of Circassians in the Arab regions of the
+        Ottoman Empire in the second half of the 19th &ndash; early 20th
+        century”. <em>Izvestiya SOIGSI</em> No. 45 (84), 2022. Russian. Only
+        the year is given on the page.
+        <a href="https://cyberleninka.ru/article/n/pereselenie-cherkesov-v-arabskie-oblasti-osmanskoy-imperii-vo-vtoroy-polovine-xix-nachale-hh-v">Cyberleninka</a>
+      </li>
+      <li id="src-orsam">
+        <strong>Anzor Kushabiyev (Kushkhabiev) and Naima Neflyasheva</strong>,
+        <em>Syrian Circassians</em>, ORSAM Report No. 130, Ankara, November
+        2012, ISBN 978-605-4615-26-1. English edition. Kushkhabiev also has an
+        article on this site:
+        <a href={`${research}/kushkhabiev-circassian-community-in-syria/`}>Circassian community in Syria</a>.
+        <a href="https://orsam.org.tr/dosya/Analiz_130_eng.pdf">PDF</a>
+      </li>
+      <li id="src-lash">
+        <strong>Adel Abdel Salam (Lash)</strong>, “<span lang="ar" dir="rtl">الشركس في سورية</span>”
+        (“The Circassians in Syria”), <em>Syrian Contemporary History</em>
+        (<span lang="ar" dir="rtl">التاريخ السوري المعاصر</span>). Published
+        <time datetime="2022-08-12">12 August 2022</time>. The site’s page data
+        shows it last modified 11 October 2026. Arabic. The page credits Lash
+        in a footnote only.
+        <a href="https://syrmh.com/2022/08/12/%d8%a7%d9%84%d8%b4%d8%b1%d9%83%d8%b3-%d9%81%d9%8a-%d8%b3%d9%88%d8%b1%d9%8a%d8%a9/">Page</a>
+      </li>
+    </ol>
+    <p>
+      <mark>
+        Review: the Lash article and the other Russian and Arabic sources are
+        translated by an AI assistant, not a professional. Please have a reader
+        of Russian and Arabic check the quoted passages and figures before
+        relying on them.
+      </mark>
+    </p>
+  </section>
+
+  <hr />
+
+  <section id="maps">
+    <h2>Maps from the sources</h2>
+    <p>
+      Two of the six sources have maps: the Sabancı thesis (Kazzaz) and the
+      Lash article. The other four have none that I could find
+      <Cite src="akbulat" label="Akbulat" at="whole article" />,
+      <Cite src="chochiev" at="whole article" />,
+      <Cite src="mirzoeva" at="web text" /> and
+      <Cite src="orsam" at="photos and tables only" />. All the maps below show
+      where Circassian villages lay <em>within Syria</em> (or, for Lash’s
+      second map, in Anatolia). <strong>None of them shows the earlier stages
+      of the route, from the Caucasus or through the Balkans.</strong> Those
+      stages are described in the text only. The images are shown as published
+      in each source, with credit. The captions and the comments on what each
+      map shows are mine, unless a citation is given.
+    </p>
+
+    <figure id="map-kazzaz">
+      <a href="/migration/kazzaz-figure-3-1.jpg">
+        <img
+          src="/migration/kazzaz-figure-3-1.jpg"
+          width="1193"
+          height="615"
+          alt="Period map of Syria and Lebanon with orange dots marking Circassian villages around Hama and Homs, around Damascus and Mount Hermon, and in the south around the Hauran, Golan and Balqa."
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <figcaption>
+        <strong>Figure 3.1, “The Settlement Pattern of Circassian Villages in
+        Greater Syria”.</strong> From Kazzaz’s thesis
+        <Cite src="kazzaz" at="p. 26" />. The thesis credits it to Lewis,
+        <em>Nomads and Settlers</em>, p. 100, and Aydemir, <em>Göç: Kuzey
+        Kafkasyalıların Göç Tarihi</em>, p. 144. I cannot tell from the thesis
+        how much of the map is from each.
+      </figcaption>
+    </figure>
+    <p>
+      <strong>What it shows (my reading of the image).</strong> A period map
+      with orange dots for Circassian villages. The dots cluster in three
+      areas: around Hama and Homs, around Damascus and Mount Hermon, and in the
+      south, in the Hauran, Golan and Balqa. The dots carry no labels, so I
+      cannot pick out Mansura on it.
+    </p>
+    <p>
+      <strong>Context in the thesis.</strong> The figure ends section 3.1 of
+      Kazzaz’s chapter 3. There he writes that “in Jawlan and
+      Transjordan the pattern of Circassian settlements formed a barrier along
+      the transitional zone”, with one main aim: to separate the populated,
+      fertile coastal parts from semi-independent barren lands
+      <Cite src="kazzaz" at="p. 25" />. He calls Quneitra “an ideal
+      district” for settling refugees, because the land was fertile but used
+      only by the Fadl tribe and others for grazing, it lay near the Druze at
+      Majdal Shams, and it was close to Damascus
+      <Cite src="kazzaz" at="p. 25" />.
+    </p>
+    <p>
+      The thesis has one other picture in this chapter, Figure 3.2. It is a
+      photograph of the Circassian village of Bireyka, built on ancient ruins,
+      not a map
+      <Cite src="kazzaz" at="p. 35" />.
+    </p>
+
+    <figure id="map-schumacher">
+      <a href="/migration/schumacher-jawlan-1888.jpg">
+        <img
+          src="/migration/schumacher-jawlan-1888.jpg"
+          width="1400"
+          height="2203"
+          alt="Black-and-white survey map of the Jaulân (Golan), with the title Map of the Jaulân by Gottlieb Schumacher, C.E. 1885, and place names in English transliteration."
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <figcaption>
+        <strong>“Map of the Jaulân” by Gottlieb Schumacher</strong>, as
+        reproduced in Kazzaz’s Appendix 10, which labels it “Schumacher’s map of
+        Jawlan, 1888” <Cite src="kazzaz" at="p. 102" />. The map’s own title
+        block says “C.E. 1885” and it carries the heading of the Palestine
+        Exploration Fund. 1888 is the year of the book it comes from
+        (<em>The Jaulân</em>, London: Richard Bentley and Son, 1888)
+        <Cite src="kazzaz" at="p. 24, note 90" />.
+      </figcaption>
+    </figure>
+    <p>
+      <strong>What it shows (my reading of the image).</strong> A detailed
+      survey map of the whole Golan, with relief, roads and village names. At
+      this size I can read <em>el Mansûrah</em> and <em>el Kunêtrah</em>
+      (Quneitra) among the labels, with Mansura lying north of Quneitra and
+      near the Roman road. It is a low-resolution scan of a large map, so please
+      check the village positions against the original.
+    </p>
+    <p>
+      <strong>Context in the thesis.</strong> Schumacher’s survey is the main
+      field source for Kazzaz’s chapter 3
+      <Cite src="kazzaz" at="p. 6" />. His expedition “depicts the
+      Circassian villages in great detail”, and he reports that Quneitra
+      town had about 1,300 inhabitants, mostly Circassians
+      <Cite src="kazzaz" at="p. 34" />. The same survey is the source for the
+      Mansura population of 400 <Cite src="kazzaz" at="p. 35" />. It dates from
+      the years of the 1885 yearbook count of 184 households for Mansura
+      <Cite src="kazzaz" at="p. 36, Table 3.1" />.
+    </p>
+
+    <figure id="map-lash-syria">
+      <a href="/migration/lash-circassian-settlements-1878-1967.jpg">
+        <img
+          src="/migration/lash-circassian-settlements-1878-1967.jpg"
+          width="827"
+          height="622"
+          alt="Hand-annotated black-and-white map of Syria with red lines from the Golan, Damascus, Hama and Homs areas to boxed lists of village names in Arabic. A German caption at the lower right reads Ursprüngliche Tscherkessische Siedlungen in Syrien (1878–1967)."
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <figcaption>
+        <strong>“Original Circassian settlements in Syria (1878&ndash;1967)”.</strong>
+        The German caption on the map itself. The page’s caption, in Arabic:
+        <span lang="ar" dir="rtl">خريطة أولية لتوزع التجمعات السكانية الشركسية في سورية بين سنة 1878 وسنة تهجيرهم من الجولان 1967</span>
+        (“A preliminary map of the distribution of the Circassian settlements
+        in Syria between 1878 and their displacement from the Golan in 1967”;
+        my translation). <Cite src="lash" at="first map" />
+      </figcaption>
+    </figure>
+    <p>
+      <strong>What it shows (my reading of the image).</strong> A
+      hand-annotated outline map of Syria. Red lines run from clusters of dots
+      to boxed lists of village names in Arabic. One box, headed
+      <span lang="ar" dir="rtl">قرى الجولان</span> (“villages of the Golan”), lists
+      <span lang="ar" dir="rtl">المنصورة</span> (al-Mansura) <strong>first</strong>,
+      then Quneitra and about ten more villages, such as Ayn Zivan,
+      al-Mumsiya, Bir Ajam, al-Buraiqa, al-Juwayza, al-Fazara and al-Faraj;
+      <span lang="ar" dir="rtl">رويحينة</span> (Ruhayna) is written apart from the box.
+      I read this off an enlarged copy of a small image of handwriting, so
+      some names may be misread. Other boxes list villages around Hama, Homs
+      and Damascus. The map’s own Arabic title, at the lower right, adds Lebanon
+      and Palestine to Syria.
+    </p>
+    <p>
+      <strong>Context in the article.</strong> The maps appear at the end of
+      Lash’s article, after a footnote that names his earlier study, “The
+      displacement of the Circassians to Syria and their settlement in the
+      Circassian limes strip” (<span lang="ar" dir="rtl">تهجير الشركس إلى سورية وتوطينهم في شريط الليمس الشركسي</span>),
+      published on the same site in January 2018
+      <Cite src="lash" at="footnote 1" />. The page does not say who drew the
+      maps, so they may come from that earlier study (my inference). The
+      article’s own text says the largest Circassian concentration in Syria
+      was in the Golan, and lists the Golan villages, Mansura among them
+      <Cite src="lash" at="section on where Circassians lived in Syria, 1878&ndash;1967" />.
+      It counts about 40 villages and one town in all
+      <Cite src="lash" at="same section" />.
+    </p>
+
+    <figure id="map-lash-anatolia">
+      <a href="/migration/lash-circassian-villages-anatolia.jpg">
+        <img
+          src="/migration/lash-circassian-villages-anatolia.jpg"
+          width="609"
+          height="409"
+          alt="Low-quality photograph of a map of northern and central Turkey from the Black Sea coast to the south, with small coloured dots marking Circassian villages and a partial legend at the top left."
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <figcaption>
+        <strong>Circassian villages in Anatolia.</strong> The page’s Arabic
+        caption:
+        <span lang="ar" dir="rtl">خريطة لجزء كبير من تركيا تبين انتشار القرى الشركسية في وسطها على امتداد شريط شمالي/ جنوبي يمتد من البحر الأسود شمالاً إلى سورية جنوبا ويكمل شريط الليمس الشركسي في سورية</span>
+        (“A map of a large part of Turkey showing the spread of Circassian
+        villages in its centre along a north–south strip running from the Black
+        Sea in the north to Syria in the south, and completing the Circassian
+        limes strip in Syria”; my translation). <Cite src="lash" at="second map" />
+      </figcaption>
+    </figure>
+    <p>
+      <strong>What it shows (my reading of the image).</strong> A photograph of
+      a map of northern and central Turkey, from the Black Sea coast down to the
+      south, with small coloured dots for villages and part of a legend (partly
+      legible, with entries such as Chechen and East Circassian) cut off at the top left. The
+      image is of poor quality and the village names are not legible.
+    </p>
+    <p>
+      <strong>Context in the article.</strong> The caption ties it to Lash’s
+      “limes” idea: that the Ottomans settled Circassians mainly in a strip
+      between the cultivated land and the desert, and that this strip ran on
+      from Anatolia into Syria. The article says Circassians were settled
+      first in villages on either side of that strip, with the Golan as an
+      exception, where the Ottomans seem to have wanted a human barrier against
+      the Druze villages on Mount Hermon
+      <Cite src="lash" at="text on the settlement strip" />. The map does not
+      show the Balkans.
+    </p>
+  </section>
+</PageLayout>
+
+<style>
+  dt {
+    font-weight: bold;
+    margin-block-start: 0.5em;
+  }
+
+  dd {
+    margin-inline-start: 0;
+  }
+
+  blockquote {
+    margin-inline: 0;
+    padding-inline-start: 1em;
+    border-inline-start: 3px solid #ccc;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-block: 1em;
+  }
+
+  th,
+  td {
+    text-align: start;
+    vertical-align: top;
+    padding: 0.3em 0.5em;
+    border: 1px solid #ccc;
+  }
+
+  .key {
+    padding: 0.5em 1em;
+    border: 2px solid #999;
+  }
+
+  .key p {
+    margin: 0;
+  }
+
+  figure {
+    margin-inline: 0;
+    margin-block: 1.5em 0.75em;
+  }
+
+  figure img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    margin-block-start: 0.4em;
+    font-size: 0.9em;
+  }
+
+  .claims {
+    list-style: none;
+    margin-inline: 0;
+    padding: 0;
+  }
+
+  .claims > li + li {
+    margin-block-start: 1.25em;
+  }
+
+  .claims ul {
+    margin-block-start: 0.4em;
+  }
+
+  .claims ul li + li {
+    margin-block-start: 0.4em;
+  }
+</style>

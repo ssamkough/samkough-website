@@ -1,0 +1,39 @@
+---
+// A short citation. Use `src` for one of the six studies on the migration
+// page (it links to the entry in the Sources list), or `page` for a research
+// page on this site (it links to that page). `at` is the page or section.
+interface Props {
+  src?: "kazzaz" | "akbulat" | "chochiev" | "mirzoeva" | "orsam" | "lash";
+  page?: string;
+  label?: string;
+  at?: string;
+}
+
+const { src, page, label, at } = Astro.props;
+
+const labels = {
+  kazzaz: "Kazzaz",
+  akbulat: "Akbulat",
+  chochiev: "Chochiev",
+  mirzoeva: "Mirzoeva & Apazheva",
+  orsam: "ORSAM",
+  lash: "Lash",
+};
+
+const href = src
+  ? `#src-${src}`
+  : page?.startsWith("/")
+    ? page
+    : `/people/amin-samkough/research/${page}/`;
+const text = label ?? (src ? labels[src] : page);
+---
+
+<span class="cite">[<a href={href}>{text}</a>{at ? `, ${at}` : ""}]</span>
+
+<style>
+  .cite {
+    font-size: 0.85em;
+    font-style: normal;
+    font-weight: normal;
+  }
+</style>

@@ -116,6 +116,7 @@ export const familyTree: Person = {
         },
         {
           name: "Naljeah Samkough",
+          spouses: [{ name: "Isa Libzo", gender: "male" }],
           // Listed oldest to youngest within each group; the combined birth
           // order of sons and daughters isn't known.
           children: [

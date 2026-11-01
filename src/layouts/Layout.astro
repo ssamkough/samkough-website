@@ -1,0 +1,34 @@
+---
+import "../styles/1-globals.css";
+import "../styles/2-variables.css";
+import "../styles/3-defaults.css";
+
+const DEFAULT_TITLE = "samkough.com";
+const DESCRIPTION = "A website for about the Samkough family.";
+
+const { title } = Astro.props;
+const siteTitle = title ? `${title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={DESCRIPTION} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{siteTitle}</title>
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={DESCRIPTION} />
+    <meta property="og:url" content="https://samkough.com" />
+    <meta property="og:site_name" content={DEFAULT_TITLE} />
+    <meta property="og:image" content="/apple-touch-icon.png" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

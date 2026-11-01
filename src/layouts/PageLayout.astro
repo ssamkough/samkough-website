@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+  <div class="container">
+    <header>
+      <a href="/">Home</a>
+      <h1>{title}</h1>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <hr />
+    <footer></footer>
+  </div>
+</Layout>
+
+<style>
+  main {
+    max-width: 600px;
+  }
+</style>

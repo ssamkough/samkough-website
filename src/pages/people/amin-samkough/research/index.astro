@@ -112,7 +112,16 @@ const turkish: Article[] = [
   },
 ];
 
+const background: Article[] = [
+  {
+    slug: "caucasus-mountaineers-peoples-party-resources",
+    title: "Resources on the Caucasus Mountaineers’ People’s Party",
+    note: "reading list with notes, not a translation; background on the party two sources say Samkough belonged to, and where to look next",
+  },
+];
+
 const sections = [
+  { id: "background", heading: "Background", articles: background },
   { id: "russian", heading: "Russian", articles: russian },
   { id: "arabic", heading: "Arabic", articles: arabic },
   { id: "turkish", heading: "Turkish", articles: turkish },
@@ -125,7 +134,8 @@ const sections = [
   </p>
   <p>
     Translated articles, entries and primary sources about Amin Samkough, grouped
-    by the language of the original and listed oldest first within each group.
+    by the language of the original and listed oldest first within each group,
+    plus a background page on the party he is said to have belonged to.
     How these were translated, and how far to trust them, is explained on the
     <a href="/more-info/">More info</a> page. Jump to: {
       sections.map((section, i) => (

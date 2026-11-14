@@ -1,0 +1,317 @@
+---
+import PageLayout from "../../../../layouts/PageLayout.astro";
+
+interface Source {
+  url: string;
+  title: string;
+  note: string;
+}
+
+const scholarly: Source[] = [
+  {
+    url: "https://www.caucasology.ru/jour/article/view/44",
+    title: "Babich, Kavkazologiya 2024, no. 2 (abstract page)",
+    note: "Peer-reviewed and archive-based. I have read only the abstract page, not the PDF. DOI: 10.31143/2542-212X-2024-2-101-127.",
+  },
+  {
+    url: "https://cyberleninka.ru/article/n/turetskiy-vektor-v-obschestvenno-politicheskoy-zhizni-severokavkazskih-migrantov-v-1920-1940-e-gody",
+    title: "Babich, “The Turkish Vector in the Social and Political Life of North Caucasian Migrants in the 1920s–1940s”",
+    note: "Peer-reviewed. Lists “Kunejt (Syria)” and Damascus among the places party members came from, and quotes a 1929 memo by Bicherakhov about a Bolshevik agent sent to Syria. It does not name Samkough. The passage cites a footnote (no. 18) that I could not read.",
+  },
+  {
+    url: "https://cyberleninka.ru/article/n/institutsionalnaya-struktura-severokavkazskogo-zarubezhya-vo-frantsii-v-1920-e-1950-e-gg",
+    title: "Babich, “The Institutional Structure of the North Caucasian Diaspora in France, 1920s–1950s”",
+    note: "Peer-reviewed. Context for the Paris branch only.",
+  },
+  {
+    url: "http://www.emigrantica.ru/item/gortsy-kavkaza-parizh-varshava-19281934",
+    title: "Emigrantica entry on the party’s periodical «Горцы Кавказа»",
+    note: "Bibliographic data for the Paris and Warsaw organ, 1928–34.",
+  },
+  {
+    url: "https://www.kutuphane.kafdav.org.tr/details.php?id=16158",
+    title: "Kafkas Vakfı library catalog record (KDHP periodicals summary)",
+    note: "Catalog record only; I did not read the article.",
+  },
+];
+
+const general: Source[] = [
+  {
+    url: "https://ru.wikipedia.org/wiki/Народная_партия_горцев_Кавказа",
+    title: "«Народная партия горцев Кавказа» (Russian Wikipedia)",
+    note: "Useful table of the party’s periodicals. The infobox gives 1925 as the founding year, which looks like a typo against the 1926 in other sources.",
+  },
+  {
+    url: "https://www.historycaucasus.com/blog/the-truth-about-said-shamil-in-the-light-of-archival-documents-part-4",
+    title: "“The Truth about Said Shamil in the Light of Archival Documents, Part 4” (historycaucasus.com)",
+    note: "A Turkish-diaspora blog, but it works from archive documents. It says Said Shamil founded the party in Warsaw and that the Prague body was its predecessor.",
+  },
+  {
+    url: "https://www.historycaucasus.com/blog/periodicals-of-the-popular-party-of-the-caucasian-mountaineers",
+    title: "“Periodicals of the Popular Party of the Caucasian Mountaineers” (historycaucasus.com)",
+    note: "Same blog; lists the party’s publications.",
+  },
+  {
+    url: "https://kuzeykafkasyacumhuriyeti.org/yazar/dug-orhan-dogbay/kuzey-kafkasya-cumhuriyetinin-yuzuncu-yilina-girerken.html",
+    title: "Doğbay, “Entering the 100th Year of the North Caucasus Republic”",
+    note: "Background on the 1917–1920 Mountaineers’ Republic only.",
+  },
+];
+
+const samkoughLinked: Source[] = [
+  {
+    url: "http://intercircass.org/?p=2166",
+    title: "Kushkhabiev, “The Circassian Community in Syria” (Intercircass, 2012)",
+    note: "Detailed on Samkough’s work in Syria. It does not link him to the party. Summarized on this site.",
+  },
+  {
+    url: "https://jinepsgazetesi.com/2025/01/kdhpli-yillarda-ortadogu/",
+    title: "Kurmel, “The Middle East in the KDHP Years” (Jineps Gazetesi, 2025)",
+    note: "Says KDHP-affiliated associations were founded in Syria (1928), Transjordan (1932) and Egypt (1932). Mentions Samkough in a separate paragraph, without saying he belonged to the party. No footnotes.",
+  },
+  {
+    url: "https://biyografi.net/kisi-emin-semsug-2299/",
+    title: "“Emin Semsuğ” (Biyografi.Net)",
+    note: "Unsourced copy of the Circassian Center profile.",
+  },
+  {
+    url: "https://www.yeniakit.com.tr/biyografi/emin-semsug",
+    title: "“Who Is Emin Semsuğ?” (Yeni Akit)",
+    note: "Shortened, unsourced version of the same text.",
+  },
+];
+
+const archives = [
+  "Babich 2024 (PDF), including footnote 18 of the “Turkish Vector” article, which may name the Syrian members.",
+  "The party’s periodical «Горцы Кавказа». Issue 1930, no. 19–20, p. 57 has an article titled «Горцы на Ближнем Востоке» (“Mountaineers in the Near East”). Digitized issues are held by the Jagiellonian Digital Library. Search them for Самгуг, Quneitra and Kuneitra.",
+  "Russian State Military Archive (РГВА), fond 461к: Bilatti’s party history (op. 2, d. 111) and Bicherakhov’s 1929 memo (op. 2, d. 110). Look for Syrian correspondence.",
+  "M. Aydın Turan, “Promethe Hareketi’nde Kuzey Kafkasya Mültecileri – KDHP” (Tarih ve Toplum, nos. 161–162, 1997), and “Sararmış Yapraklar: KDHP Periyodikleri Özeti” (2013).",
+  "Other entries in the Babich, Gladkova and Mnukhin dictionary of North Caucasians in emigration, for Syrian members and cross-references. Its name index lists Samgug on p. 157.",
+  "The preface of Samkough’s 1984 Damascus edition of the Introduction to Circassian History, for his political affiliations.",
+  "Turgenev Library (Paris) and the French Mandate archives in Nantes, for Syrian Circassian political files, 1927–1936.",
+];
+---
+
+<PageLayout title="Resources on the Caucasus Mountaineers’ People’s Party">
+  <p>
+    <a href="/people/amin-samkough/">&larr; Amin Samkough</a> &middot;
+    <a href="/people/amin-samkough/research/">Research</a>
+  </p>
+  <hr />
+
+  <section id="about">
+    <h2>About this page</h2>
+    <p>
+      Two pages on this site say Amin Samkough held a post in the “Caucasus
+      Mountaineers’ People’s Party”: the
+      <a href="/people/amin-samkough/research/circassian-center-emin-semsug/">Circassian Center profile</a>
+      and the
+      <a href="/people/amin-samkough/research/north-caucasians-in-emigration/">2020 dictionary entry</a>.
+      This page collects what I could find about the party itself, and the
+      sources to check next. It is a reading list with notes, not a translation.
+      I found these sources by web search, and I have not read all of them in
+      full. The reliability notes are my own judgment.
+    </p>
+    <p>
+      <mark>
+        Review: <strong>I found no independent source that names Samkough as a
+        member.</strong> Both claims above are unsourced, and they may copy one
+        another. The party’s existence, leader, dates and Syrian presence are
+        well documented. His role in it is not.
+      </mark>
+    </p>
+  </section>
+  <hr />
+
+  <section id="the-party">
+    <h2>The party in brief</h2>
+    <dl>
+      <dt>Names</dt>
+      <dd>
+        <span lang="ru">Народная партия горцев Кавказа</span> (НПГК, NPGK);
+        <span lang="tr">Kafkasya Dağlıları Halk Partisi</span> (KDHP); in
+        English “People’s Party of the Caucasian Mountaineers (Highlanders)”.
+        Its French organ was titled <em>Les Montagnards du Caucase</em>.
+      </dd>
+      <dt>Predecessor</dt>
+      <dd>
+        <span lang="ru">Народная партия вольных горцев Кавказа</span>
+        (People’s Party of the Free Mountaineers), founded in Prague as the
+        political wing of the Union of Mountaineers of the Caucasus. Its
+        organ, <span lang="ru">«Вольные горцы»</span>, appeared in Prague in
+        1927–28.
+      </dd>
+      <dt>Founded</dt>
+      <dd>
+        18 November 1926 in most sources. The place is disputed: Prague
+        (Babich) or Warsaw (the historycaucasus.com blog).
+      </dd>
+      <dt>Leader</dt>
+      <dd>
+        Muhammad Said Shamil, general secretary; a Turkish citizen, born in
+        Istanbul in 1901, and a grandson of Imam Shamil.
+      </dd>
+      <dt>Other figures named</dt>
+      <dd>
+        Lazar Bicherakhov (head of the European organization), Barasbi
+        Baytugan, Balo Bilatti, T. Elekhoti, Prince Elmurza Bekovich-Cherkassky
+        (first editor of the organ) and Zhanbek Khavzhoko.
+      </dd>
+      <dt>Backing</dt>
+      <dd>
+        Poland, through Tadeusz Schaetzel and with Piłsudski’s support, as part
+        of the Polish-sponsored Prometheus movement.
+      </dd>
+      <dt>Aims</dt>
+      <dd>
+        Pan-Caucasian unity and anti-communism: a restored mountaineer republic
+        inside a Caucasian Confederation, in the line of the 1917–1920
+        Mountaineers’ Republic.
+      </dd>
+      <dt>Branches</dt>
+      <dd>
+        Prague, Brno, Paris, Istanbul and Warsaw. Babich also lists “Kunejt
+        (Syria)” and Damascus among the places members came from. Jineps says
+        affiliated associations were set up in Syria in 1928, Transjordan in
+        1932 and Egypt in 1932.
+      </dd>
+      <dt>Publications</dt>
+      <dd>
+        <span lang="ru">«Горцы Кавказа»</span> /
+        <span lang="tr">Kafkasya Dağlıları</span> (Paris and Warsaw, 1928–34,
+        nos. 1–50) and <span lang="ru">«Северный Кавказ»</span> /
+        <span lang="tr">Şimali Kafkasya</span> (Warsaw and Paris, 1934–39),
+        plus several short-lived periodicals.
+      </dd>
+      <dt>Rivals</dt>
+      <dd>
+        Haydar Bammat’s Nationalist Democratic Party. In 1929 a split led by
+        Ali Khan Kantemir produced a Federalist party in Istanbul.
+      </dd>
+      <dt>Active</dt>
+      <dd>
+        1926–1939, in four phases (1926–30, 1931–33, 1934–36, 1937–39). It
+        stopped at the start of World War II. Babich judges that it had little
+        success or prestige among émigrés but was an important stage in their
+        political self-awareness.
+      </dd>
+    </dl>
+    <p>
+      <mark>
+        Review: the founding place (Prague or Warsaw) and the founding year
+        (1925 on Russian Wikipedia) differ between sources. The Jineps article
+        says Czechoslovakia and then Poland, and the dictionary entry on this
+        site is said to place the party in Paris and Istanbul too. These may be
+        phases or offices of one body, or one source may be wrong.
+      </mark>
+    </p>
+  </section>
+  <hr />
+
+  <section id="syria">
+    <h2>The Syria link</h2>
+    <p>
+      The strongest hint is in Babich’s 2024 article on the Turkish vector. It
+      lists “Kunejt (Syria)” and Damascus among the places party members came
+      from, which fits Quneitra and Damascus. It also quotes Bicherakhov’s 1929
+      memo saying a Bolshevik agent, Aydebulov, was sent to Syria to turn local
+      Circassians against the party. So the party was active enough in Syria to
+      be a target. The article does not name Samkough.
+    </p>
+    <p>
+      <mark>
+        Review: that is still not evidence about him. The 1936 clash and his
+        resignation as mayor, from Mirzoev’s account, show a Syria-based
+        Circassian nationalist, but Mirzoev’s study never mentions the party.
+        The “board member” wording comes only from the dictionary entry, which
+        gives no source.
+      </mark>
+    </p>
+  </section>
+  <hr />
+
+  <section id="scholarly">
+    <h2>Scholarly sources</h2>
+    <ul>
+      {
+        scholarly.map((s) => (
+          <li>
+            <a href={s.url}>{s.title}</a>
+            <p>({s.note})</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <hr />
+
+  <section id="general">
+    <h2>Other sources on the party</h2>
+    <ul>
+      {
+        general.map((s) => (
+          <li>
+            <a href={s.url}>{s.title}</a>
+            <p>({s.note})</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <hr />
+
+  <section id="samkough-linked">
+    <h2>Sources that mention Samkough</h2>
+    <p>
+      None of these says, with a source, that he was a member. The first two
+      are the closest.
+    </p>
+    <ul>
+      {
+        samkoughLinked.map((s) => (
+          <li>
+            <a href={s.url}>{s.title}</a>
+            <p>({s.note})</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <hr />
+
+  <section id="next">
+    <h2>Where to look next</h2>
+    <ol>
+      {archives.map((item) => <li>{item}</li>)}
+    </ol>
+  </section>
+  <hr />
+
+  <section id="spellings">
+    <h2>Name spellings</h2>
+    <ul>
+      <li>
+        <strong>The party:</strong> НПГК; Народная партия горцев Кавказа;
+        Народная партия вольных горцев Кавказа (earlier name); KDHP;
+        “Narodnaya Partiya Gortsev Kavkaza” (the Circassian Center’s Latin
+        spelling). I found no Adyghe form.
+      </li>
+      <li>
+        <strong>Samkough:</strong> Самгуг Амин (dictionary, Mirzoev); Эмин
+        Семсуг; Emin Semsuğ (Biyografi.Net, Yeni Akit, Circassian Center);
+        Emin Semguğ (Jineps).
+      </li>
+    </ul>
+  </section>
+</PageLayout>
+
+<style>
+  dt {
+    font-weight: bold;
+    margin-block-start: 0.5em;
+  }
+
+  dd {
+    margin-inline-start: 0;
+  }
+</style>
